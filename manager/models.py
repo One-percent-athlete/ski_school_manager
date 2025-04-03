@@ -62,7 +62,7 @@ def create_profile(sender, instance, created, **kwargs):
 
 post_save.connect(create_profile, sender=User)
 
-class Lessons(models.Model):
+class Lesson(models.Model):
     instructors = models.ManyToManyField(Profile, related_name="instructors", blank=False)
     name = models.CharField("", max_length=255)
     client = models.CharField("客人姓名", max_length=255)
