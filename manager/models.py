@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 class Profile(models.Model):
-    CONTRACT_TYPES = (
+    ZHIWU = (
         ('其他', '其他'),
         ('管理', '管理'),
         ('教练', '教练'),
@@ -23,7 +23,7 @@ class Profile(models.Model):
         ('满级', '满级'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    contract_type = models.CharField("职务", max_length=50, choices=CONTRACT_TYPES, default='教练')
+    contract_type = models.CharField("职务", max_length=50, choices=ZHIWU, default='教练')
     fullname = models.CharField("姓名", max_length=20, blank=True)
     phone = models.CharField("電話", max_length=20, blank=True)
     email = models.CharField("邮箱", max_length=20, blank=True)
@@ -63,8 +63,9 @@ class Paike(models.Model):
     )
     instructors = models.ManyToManyField(Profile, related_name="instructors", blank=False)
     name = models.CharField("", max_length=255)
-    client = models.CharField("取引先", max_length=255)
-    address = models.CharField("住所", max_length=255)
+    client = models.CharField("客人姓名", max_length=255)
+    address = models.CharField("酒店", max_length=255)
+    jibie = models.CharField("级别", max_length=255)
     color = models.CharField("現場色", max_length=30, choices=COLORS)
     job_description = models.CharField("作業内容", max_length=255, blank=True, null=True)
     note = models.CharField("備考", max_length=255, blank=True, null=True)
