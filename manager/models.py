@@ -5,14 +5,34 @@ from django.db.models.signals import post_save
 
 class Profile(models.Model):
     CONTRACT_TYPES = (
-        ('下請け', '下請け'),
-        ('正社員', '正社員'),
+        ('其他', '其他'),
         ('管理', '管理'),
+        ('教练', '教练'),
+    )
+    TIXI = (
+        ('加拿大', '加拿大'),
+        ('新西兰', '新西兰'),
+        ('澳大利亚', '澳大利亚'),
+        ('日本', '日本'),
+        ('其他', '其他'),
+    )
+    LEVEL = (
+        ('1级', '1级'),
+        ('2级', '2级'),
+        ('3级', '3级'),
+        ('满级', '满级'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    contract_type = models.CharField("雇用形態", max_length=50, choices=CONTRACT_TYPES, default='正社員')
-    fullname = models.CharField("お名前", max_length=20, blank=True)
-    phone = models.CharField("携帯電話", max_length=20, blank=True)
+    contract_type = models.CharField("职务", max_length=50, choices=CONTRACT_TYPES, default='教练')
+    fullname = models.CharField("姓名", max_length=20, blank=True)
+    phone = models.CharField("電話", max_length=20, blank=True)
+    email = models.CharField("邮箱", max_length=20, blank=True)
+    weixin = models.CharField("微信", max_length=20, blank=True)
+    whatsapp = models.CharField("Whatsapp", max_length=20, blank=True)
+    line = models.CharField("LINE", max_length=20, blank=True)
+    tixi = models.CharField("体系", max_length=50, choices=TIXI, default='加拿大')
+    jibie = models.CharField("级别", max_length=50, choices=LEVEL, default='1级')
+    sushe = models.CharField("宿舍", max_length=20, blank=True)
     note = models.CharField("備考", max_length=500, blank=True)
     is_active = models.BooleanField("現役中", default=True)
     date_created = models.DateTimeField("作成日", auto_now_add=True)
