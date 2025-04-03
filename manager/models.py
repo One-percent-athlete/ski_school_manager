@@ -4,6 +4,17 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 class Profile(models.Model):
+    COLORS = (
+        ('#808080', '灰色'),
+        ('#ff6961', '赤色'),
+        ('#ffb480', '橙色'),
+        ('#f8f38d', '黄色'),
+        ('#42d6a4', '緑色'),
+        ('#08cad1', '水色'),
+        ('#59adf6', '青色'),
+        ('#9d94ff', '紫色'),
+        ('#c780e8', '桃色'),
+    )
     ZHIWU = (
         ('其他', '其他'),
         ('管理', '管理'),
@@ -23,6 +34,8 @@ class Profile(models.Model):
         ('满级', '满级'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    birthday = models.DateField("生年月日", blank=True, null=True)
+    color = models.CharField("現場色", max_length=30, choices=COLORS)
     contract_type = models.CharField("职务", max_length=50, choices=ZHIWU, default='教练')
     fullname = models.CharField("姓名", max_length=20, blank=True)
     phone = models.CharField("電話", max_length=20, blank=True)
@@ -50,23 +63,11 @@ def create_profile(sender, instance, created, **kwargs):
 post_save.connect(create_profile, sender=User)
 
 class Paike(models.Model):
-    COLORS = (
-        ('#808080', '灰色'),
-        ('#ff6961', '赤色'),
-        ('#ffb480', '橙色'),
-        ('#f8f38d', '黄色'),
-        ('#42d6a4', '緑色'),
-        ('#08cad1', '水色'),
-        ('#59adf6', '青色'),
-        ('#9d94ff', '紫色'),
-        ('#c780e8', '桃色'),
-    )
     instructors = models.ManyToManyField(Profile, related_name="instructors", blank=False)
     name = models.CharField("", max_length=255)
     client = models.CharField("客人姓名", max_length=255)
     address = models.CharField("酒店", max_length=255)
     jibie = models.CharField("级别", max_length=255)
-    color = models.CharField("現場色", max_length=30, choices=COLORS)
     job_description = models.CharField("作業内容", max_length=255, blank=True, null=True)
     note = models.CharField("備考", max_length=255, blank=True, null=True)
     start_date = models.DateTimeField("作業開始日")
