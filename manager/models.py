@@ -63,12 +63,21 @@ def create_profile(sender, instance, created, **kwargs):
 post_save.connect(create_profile, sender=User)
 
 class Lesson(models.Model):
+    PAYMENT_TYPES = (
+        ('現金','現金'),
+        ('カード', 'カード'),
+        ('電子マネー', '電子マネー'),
+        ('会社ETC', '会社ETC'),
+        ('無', '無'),
+        )
     instructors = models.ManyToManyField(Profile, related_name="instructors", blank=False)
-    name = models.CharField("", max_length=255)
     client = models.CharField("客人姓名", max_length=255)
     address = models.CharField("酒店", max_length=255)
     jibie = models.CharField("级别", max_length=255)
     job_description = models.CharField("内容", max_length=255, blank=True, null=True)
+    payment_type = models.CharField("付款方式", max_length=50, choices=PAYMENT_TYPES, default='現金')
+    payment_amount = models.DecimalField("付款金額", max_digits=10, decimal_places=2, blank=True, null=True)
+    payment_date = models.DateTimeField("付款日", blank=True, null=True)
     note = models.CharField("備考", max_length=255, blank=True, null=True)
     start_date = models.DateTimeField("開始日")
     end_date = models.DateTimeField("終了日")
