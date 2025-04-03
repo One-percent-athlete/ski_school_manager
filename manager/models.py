@@ -68,10 +68,10 @@ class Lessons(models.Model):
     client = models.CharField("客人姓名", max_length=255)
     address = models.CharField("酒店", max_length=255)
     jibie = models.CharField("级别", max_length=255)
-    job_description = models.CharField("作業内容", max_length=255, blank=True, null=True)
+    job_description = models.CharField("内容", max_length=255, blank=True, null=True)
     note = models.CharField("備考", max_length=255, blank=True, null=True)
-    start_date = models.DateTimeField("作業開始日")
-    end_date = models.DateTimeField("作業終了日")
+    start_date = models.DateTimeField("開始日")
+    end_date = models.DateTimeField("終了日")
     finished = models.BooleanField("終了", default=False)
     date_created = models.DateTimeField("作成日", auto_now_add=True)
 
