@@ -15,12 +15,12 @@ class Profile(models.Model):
         ('#9d94ff', '紫色'),
         ('#c780e8', '桃色'),
     )
-    ZHIWU = (
+    TYPE = (
         ('其他', '其他'),
         ('管理', '管理'),
         ('教练', '教练'),
     )
-    TIXI = (
+    SYSTEM = (
         ('加拿大', '加拿大'),
         ('新西兰', '新西兰'),
         ('澳大利亚', '澳大利亚'),
@@ -36,14 +36,14 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday = models.DateField("生年月日", blank=True, null=True)
     color = models.CharField("現場色", max_length=30, choices=COLORS)
-    contract_type = models.CharField("职务", max_length=50, choices=ZHIWU, default='教练')
+    contract_type = models.CharField("职务", max_length=50, choices=TYPE, default='教练')
     fullname = models.CharField("姓名", max_length=20, blank=True)
     phone = models.CharField("電話", max_length=20, blank=True)
     email = models.CharField("邮箱", max_length=20, blank=True)
     weixin = models.CharField("微信", max_length=20, blank=True)
     whatsapp = models.CharField("Whatsapp", max_length=20, blank=True)
     line = models.CharField("LINE", max_length=20, blank=True)
-    tixi = models.CharField("体系", max_length=50, choices=TIXI, default='加拿大')
+    tixi = models.CharField("体系", max_length=50, choices=SYSTEM, default='加拿大')
     jibie = models.CharField("级别", max_length=50, choices=LEVEL, default='1级')
     sushe = models.CharField("宿舍", max_length=20, blank=True)
     note = models.CharField("備考", max_length=500, blank=True)
@@ -62,7 +62,7 @@ def create_profile(sender, instance, created, **kwargs):
 
 post_save.connect(create_profile, sender=User)
 
-class Paike(models.Model):
+class Lessons(models.Model):
     instructors = models.ManyToManyField(Profile, related_name="instructors", blank=False)
     name = models.CharField("", max_length=255)
     client = models.CharField("客人姓名", max_length=255)
