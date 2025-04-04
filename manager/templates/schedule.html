@@ -1,54 +1,88 @@
-{% load static %}
+{% extends "base.html" %}
+{% block title %}
+スケジュール
+{% endblock %}
 
-<div class="container">
-    <div id="calendar"></div>
+{% block content %}
+<div class="p-4 sm:ml-64">
+    {% if request.user.profile.contract_type == "下請け" %}
+    {% else %}
+    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg">
+        {% include 'components/calendar.html' %}
+    </div>
+    {% endif %}
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="px-auto">
+            <h1 class="text-4xl py-10">本日の作業現場
+                {% if request.user.profile.contract_type == "下請け" %}
+                {% else %}
+                <a class="pl-8" href="#">＋</a>
+                {% endif %}
+            </h1>
+            <h2 class="text-6xl m-0 mr-3"></h2>
+        </div>
+        <table class="w-full text-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead
+                class="text-normal text-gray-700 uppercase bg-gray-50 whitespace-nowrap dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        現場名
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        場所
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        職長
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        同行者
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        作業内容
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        備考
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        編集
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if genbas_today %}
+                {% for genba in genbas_today %}
+                <tr class="border-b">
+                    <th scope="row" class="pl-6 pr-3 py-4 font-medium whitespace-nowrap text-gray-900">
+                        <a href="#" style="color: {{genba.color }};">
+                            {{ genba.name }}
+                        </a>
+                    </th>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        {{ genba.address }}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        {{ genba.head_person }}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        {% for a in genba.attendees.all %}
+                        {{ a }}
+                        {% endfor %}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        {{ genba.job_description }}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        {{ genba.note }}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <a href="{% url 'genba_details' genba.id %}"
+                            class="font-medium text-blue-600 hover:underline">編集</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
 </div>
-
-<style>
-    #calendar {
-        font-size: 16px;
-    }
-
-    @media (max-width: 768px) {
-        #calendar {
-            font-size: 10px;
-            /* Smaller font size for mobile */
-        }
-    }
-</style>
-
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            locale: 'ja',
-            buttonText: {
-                prev: '先月',
-                next: '来月',
-                // prevYear: '<<去年',
-                // nextYear: '来年>>',
-                today: '今日',
-                month: '月',
-                week: '週',
-                day: '日',
-                list: '一覧'
-            },
-            events:
-                [
-                    {% for genba in genba_list %}
-                    {
-                title: '{{ genba.name }} : {{ genba.head_person }} {% for a in genba.attendees.all %} , {{ a }} {% endfor %}',
-                start: '{{ genba.start_date | date:"Y-m-d" }}',
-                end: '{{ genba.end_date | date:"Y-m-d 23:59:59" }}',
-                color: '{{ genba.color }}',
-            },
-            {% endfor %}
-            ],
-        displayEventTime: false,
-        });
-
-    calendar.render();
-    });
-</script>
+{% endblock %}
