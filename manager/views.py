@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.utils.safestring import mark_safe
-from calendar import calendar
+import calendar
 import datetime
 now = datetime.datetime.now()
 
