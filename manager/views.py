@@ -1,14 +1,16 @@
-from calendar import calendar
-from datetime import datetime
 from django.shortcuts import redirect, render
+from calendar import calendar
+import datetime
+now = datetime.datetime.now()
 
-# Create your views here.
+from .models import Lesson
+
 def home(request):
     return render(request, 'home.html', {})
 
 def schedule(request):
     if request.user.is_authenticated:
-        genba_list = Genba.objects.all().order_by('-date_created')
+        genba_list = Lesson.objects.all().order_by('-date_created')
         genbas_today = []
         for genba in genba_list:
             date = datetime.datetime(now.year, now.month, now.day)
