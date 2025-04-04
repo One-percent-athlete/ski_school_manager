@@ -1,5 +1,8 @@
 from django.shortcuts import redirect, render
 from django.utils.safestring import mark_safe
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 import calendar
 import datetime
 now = datetime.datetime.now()
@@ -39,3 +42,21 @@ def schedule(request):
          return render(request, "schedule.html", context=context)
     else:
         return redirect('login_user')
+    
+def login_user(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            if user.profile:
+                messages.success(request, (f"{user.profile} さん, お帰りなさい。"))
+            else:
+                messages.success(request, ("お帰りなさい。"))
+            return redirect("home")
+        else:
+            messages.success(request, ("ユーザー名、またはパスワードが違います。再度お試しください。"))
+            return redirect("login_user")
+    else:
+        return render(request, "authentication/login.html", {})  
