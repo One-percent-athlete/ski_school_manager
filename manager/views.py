@@ -8,7 +8,7 @@ import datetime
 now = datetime.datetime.now()
 
 from .forms import SignUpForm
-from .models import Lesson
+from .models import Lesson, Profile
 
 def home(request):
     return render(request, 'home.html', {})
@@ -91,3 +91,14 @@ def register_user(request):
     else:
         messages.success(request, ("ページは管理人のみがアクセスできます。"))
         return redirect("login_user")
+    
+@login_required(login_url='/login_user/')
+def delete_user(request, user_id):
+    if request.user.is_authenticated:
+        current_user = Profile.objects.get(user__id=user_id)
+        current_user.delete()
+        messages.success(request, "プロフィールを削除しました。")
+        return redirect("profile_list")
+    else:
+        messages.success(request, "ログインしてください。")
+        return redirect("home")
