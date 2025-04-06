@@ -135,7 +135,7 @@ def update_profile(request, profile_id):
         messages.success(request, ("ページは管理人のみがアクセスできます。"))
 
 @login_required(login_url='/login_user/')
-def add_genba(request):
+def add_lesson(request):
     form = LessonForm()
     if request.method == "POST":
         form = LessonForm(request.POST or None)
