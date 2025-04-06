@@ -133,3 +133,20 @@ def update_profile(request, profile_id):
             return redirect("login_user")
     else:
         messages.success(request, ("ページは管理人のみがアクセスできます。"))
+
+@login_required(login_url='/login_user/')
+def add_genba(request):
+    form = LessonForm()
+    if request.method == "POST":
+        form = LessonForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            messages.success(request, ("現場を追加しました。"))
+            return redirect("genba_list")
+        else:
+            messages.success(request, ("再度お試しください。"))
+            return redirect("genba_list")
+    else:
+        return render(request, "add_genba.html", {
+            "form": form
+        })
