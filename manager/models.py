@@ -35,7 +35,7 @@ class Profile(models.Model):
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday = models.DateField("生年月日", blank=True, null=True)
-    color = models.CharField("現場色", max_length=30, choices=COLORS)
+    color = models.CharField("教练色", max_length=30, choices=COLORS)
     contract_type = models.CharField("职务", max_length=50, choices=TYPE, default='教练')
     fullname = models.CharField("姓名", max_length=20, blank=True)
     phone = models.CharField("電話", max_length=20, blank=True)
