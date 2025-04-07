@@ -7,7 +7,7 @@ import calendar
 import datetime
 now = datetime.datetime.now()
 
-from .forms import SignUpForm, UserProfileForm
+from .forms import LessonForm, SignUpForm, UserProfileForm
 from .models import Lesson, Profile
 
 def home(request):
