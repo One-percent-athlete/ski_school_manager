@@ -53,4 +53,5 @@ class LessonForm(forms.ModelForm):
         ('#9d94ff', '紫色'),
         ('#c780e8', '桃色'),
     )
+	attendees = forms.ModelMultipleChoiceField(label="同行者", queryset=Profile.objects.all(), widget=forms.CheckboxSelectMultiple)
 	
