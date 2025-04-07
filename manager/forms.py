@@ -61,4 +61,6 @@ class LessonForm(forms.ModelForm):
 	finished = forms.BooleanField(label="完了", required=False)
 	start_date = forms.DateField(label='作業開始日', widget=forms.DateInput(attrs={'type': 'date', 'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'}))
 	end_date = forms.DateField(label='作業終了日', widget=forms.DateInput(attrs={'type': 'date', 'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'}))
+	color = forms.ChoiceField(label="カレンダー表示色", choices=COLORS, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+
 	
