@@ -144,12 +144,12 @@ def lesson_list(request):
             result_list = Lesson.objects.filter(name__contains=keyword).order_by('-date_created')
             return render(request, "genba_search_list.html", {"result_list": result_list, "keyword": keyword})
         if request.user.profile.contract_type == '下請け':
-            for genba in lesson_list:
-                if genba.head_person == request.user.profile or request.user.profile in genba.attendees.all():
-                    genbas.append(genba)
+            for lesson in lesson_list:
+                if lesson.head_person == request.user.profile or request.user.profile in lesson.attendees.all():
+                    lesson.append(lesson)
         else:
-            genbas = lesson_list
-    return render(request, "genba_list.html", {"genbas": genbas})
+            lessons = lesson_list
+    return render(request, "lesson_list.html", {"lessons": lessons})
 
 @login_required(login_url='/login_user/')
 def add_lesson(request):
