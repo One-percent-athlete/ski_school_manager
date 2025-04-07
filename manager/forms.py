@@ -40,3 +40,17 @@ class UserProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ('fullname', 'phone', 'note', 'contract_type', 'is_active')
+
+class LessonForm(forms.ModelForm):
+	COLORS = (
+		('#808080', '灰色'),
+        ('#ff6961', '赤色'),
+        ('#ffb480', '橙色'),
+        ('#f8f38d', '黄色'),
+        ('#42d6a4', '緑色'),
+        ('#08cad1', '水色'),
+        ('#59adf6', '青色'),
+        ('#9d94ff', '紫色'),
+        ('#c780e8', '桃色'),
+    )
+	
