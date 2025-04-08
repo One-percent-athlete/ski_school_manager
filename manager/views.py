@@ -135,9 +135,9 @@ def profile_list(request):
         if request.method == "POST":
             keyword = request.POST['keyword']
             result_list = Profile.objects.filter(fullname__contains=keyword).order_by('-date_created')
-            return render(request, "profile_search_list.html", {"result_list": result_list, "keyword": keyword})
+            return render(request, "profile/profile_search_list.html", {"result_list": result_list, "keyword": keyword})
         else:
-            return render(request, "profile_list.html", { "profiles": profiles, "contract": contract })
+            return render(request, "profile/profile_list.html", { "profiles": profiles, "contract": contract })
     else:
         return redirect('login_user')
 
@@ -151,7 +151,7 @@ def update_profile(request, profile_id):
                 form.save()
                 messages.success(request, "プロフィールを更新しました。")
                 return redirect("profile_list")
-            return render(request, "update_profile.html", {"form": form , "profile": profile })
+            return render(request, "profile/update_profile.html", {"form": form , "profile": profile })
         else:
             messages.success(request, "ログインしてください。")
             return redirect("login_user")
@@ -197,10 +197,10 @@ def add_lesson(request):
         if form.is_valid():
             form.save()
             messages.success(request, ("現場を追加しました。"))
-            return redirect("genba_list")
+            return redirect("lesson_list")
         else:
             messages.success(request, ("再度お試しください。"))
-            return redirect("genba_list")
+            return redirect("lesson_list")
     else:
         return render(request, "lesson/add_lesson.html", {
             "form": form
