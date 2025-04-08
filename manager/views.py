@@ -166,14 +166,14 @@ def lesson_list(request):
         if request.method == "POST":
             keyword = request.POST['keyword']
             result_list = Lesson.objects.filter(name__contains=keyword).order_by('-date_created')
-            return render(request, "lesson_search_list.html", {"result_list": result_list, "keyword": keyword})
+            return render(request, "lesson/lesson_search_list.html", {"result_list": result_list, "keyword": keyword})
         if request.user.profile.contract_type == '下請け':
             for lesson in lesson_list:
                 if lesson.head_person == request.user.profile or request.user.profile in lesson.attendees.all():
                     lesson.append(lesson)
         else:
             lessons = lesson_list
-    return render(request, "lesson_list.html", {"lessons": lessons})
+    return render(request, "lesson/lesson_list.html", {"lessons": lessons})
 
 @login_required(login_url='/login_user/')
 def lesson_details(request, lesson_id):
@@ -184,7 +184,7 @@ def lesson_details(request, lesson_id):
             form.save()
             messages.success(request, "現場を更新しました。")
             return redirect("lesson_list")
-        return render(request, "lesson_details.html", {"form": form , "lesson": lesson })
+        return render(request, "lesson/lesson_details.html", {"form": form , "lesson": lesson })
     else:
         messages.success(request, "ログインしてください。")
         return redirect("login_user")
@@ -202,7 +202,7 @@ def add_lesson(request):
             messages.success(request, ("再度お試しください。"))
             return redirect("genba_list")
     else:
-        return render(request, "add_genba.html", {
+        return render(request, "lesson/add_lesson.html", {
             "form": form
         })
     
