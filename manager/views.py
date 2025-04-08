@@ -166,7 +166,7 @@ def lesson_list(request):
         if request.method == "POST":
             keyword = request.POST['keyword']
             result_list = Lesson.objects.filter(name__contains=keyword).order_by('-date_created')
-            return render(request, "genba_search_list.html", {"result_list": result_list, "keyword": keyword})
+            return render(request, "lesson_search_list.html", {"result_list": result_list, "keyword": keyword})
         if request.user.profile.contract_type == '下請け':
             for lesson in lesson_list:
                 if lesson.head_person == request.user.profile or request.user.profile in lesson.attendees.all():
