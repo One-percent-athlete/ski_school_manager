@@ -14,25 +14,25 @@ from .models import Lesson, Notification, Profile
 @login_required(login_url='/login_user/')
 def home(request):
     if request.user.is_authenticated:
-        genba_list = Lesson.objects.all().order_by('-date_created')
-        genbas = []
-        for genba in genba_list:
+        lesson_list = Lesson.objects.all().order_by('-date_created')
+        lessons = []
+        for lesson in lesson_list:
             date = datetime.datetime(now.year, now.month, now.day)
-            start_date = datetime.datetime(genba.start_date.year, genba.start_date.month, genba.start_date.day)
-            end_date = datetime.datetime(genba.end_date.year, genba.end_date.month, genba.end_date.day)
+            start_date = datetime.datetime(lesson.start_date.year, lesson.start_date.month, lesson.start_date.day)
+            end_date = datetime.datetime(lesson.end_date.year, lesson.end_date.month, lesson.end_date.day)
             if start_date <= date <= end_date:
-                genbas.append(genba)
+                lessons.append(genba)
                 if request.user.profile.contract_type == '下請け':
-                    for genba in genbas:
+                    for genba in lessons:
                         if genba.head_person != request.user.profile or request.user.profile not in genba.attendees.all():
-                            genbas.remove(genba)
+                            lessons.remove(genba)
         if request.method == "POST":
             content = request.POST.get("content")
             author = User.objects.get(id=request.user.id)
             notification = Notification.objects.create(content=content, author=author)
             notification.save()
         notifications = Notification.objects.all().order_by('-date_created')
-        return render(request, "home.html", {"genba_list":genba_list, "genbas": genbas, "notifications": notifications})
+        return render(request, "home.html", {"lesson_list":lesson_list, "lessons": lessons, "notifications": notifications})
     else:
         messages.success(request, "ログインしてください。")
         return redirect("login_user")
