@@ -205,3 +205,14 @@ def add_lesson(request):
         return render(request, "add_genba.html", {
             "form": form
         })
+    
+@login_required(login_url='/login_user/')
+def delete_lesson(request, lesson_id):
+    if request.user.is_authenticated:
+        current_lesson = Lesson.objects.get(id=lesson_id)
+        current_lesson.delete()
+        messages.success(request, "現場を削除しました。")
+        return redirect("lesson_list")
+    else:
+        messages.success(request, "ログインしてください。")
+        return redirect("login_user")
