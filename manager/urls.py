@@ -15,4 +15,5 @@ urlpatterns = [
 
     path('lesson_list/', views.lesson_list, name="lesson_list"),
     path('add_lesson/', views.add_lesson, name="add_lesson"),
+    path('lesson_details/<int:lesson_id>/', views.lesson_details, name="lesson_details"),
 ]
