@@ -66,40 +66,40 @@
                 </tr>
             </thead>
             <tbody>
-                {% if genbas %}
-                {% for genba in genbas %}
-                {% if genba.finished == False %}
+                {% if lessons %}
+                {% for lesson in lessons %}
+                {% if lesson.finished == False %}
                 <tr class="border-b">
                     <th scope="row" class="pl-6 pr-3 py-4 font-medium whitespace-nowrap text-gray-900">
-                        <a href="{% url 'genba_details' genba.id %}">
-                            {{ genba.name }}
+                        <a href="{% url 'lesson_details' lesson.id %}">
+                            {{ lesson.name }}
                         </a>
                     </th>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ genba.address }}
+                        {{ lesson.address }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ genba.head_person }}
+                        {{ lesson.head_person }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {% for a in genba.attendees.all %}
+                        {% for a in lesson.attendees.all %}
                         {{ a }}
                         {% endfor %}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ genba.start_date | date:"Y-m-j" }}
+                        {{ lesson.start_date | date:"Y-m-j" }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ genba.end_date | date:"Y-m-j" }}
+                        {{ lesson.end_date | date:"Y-m-j" }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ genba.job_description }}
+                        {{ lesson.job_description }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ genba.note }}
+                        {{ lesson.note }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <a href="{% url 'genba_details' genba.id %}"
+                        <a href="{% url 'lesson_details' lesson.id %}"
                             class="font-medium text-blue-600 hover:underline">編集</a>
                     </td>
                 </tr>
@@ -148,40 +148,40 @@
                 </tr>
             </thead>
             <tbody>
-                {% if genbas %}
-                {% for genba in genbas %}
-                {% if genba.finished == True %}
+                {% if lessons %}
+                {% for lesson in lessons %}
+                {% if lesson.finished == True %}
                 <tr class="border-b">
                     <th scope="row" class="pl-6 pr-3 py-4 font-medium whitespace-nowrap text-gray-900">
-                        <a href="{% url 'genba_details' genba.id %}">
-                            {{ genba.name }}
+                        <a href="{% url 'lesson_details' genba.id %}">
+                            {{ lesson.name }}
                         </a>
                     </th>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ genba.address }}
+                        {{ lesson.address }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ genba.head_person }}
+                        {{ lesson.head_person }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {% for a in genba.attendees.all %}
+                        {% for a in lesson.attendees.all %}
                         {{ a }}
                         {% endfor %}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ genba.start_date | date:"Y-m-j" }}
+                        {{ lesson.start_date | date:"Y-m-j" }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ genba.end_date | date:"Y-m-j" }}
+                        {{ lesson.end_date | date:"Y-m-j" }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ genba.job_description }}
+                        {{ lesson.job_description }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ genba.note }}
+                        {{ lesson.note }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <a href="{% url 'genba_details' genba.id %}"
+                        <a href="{% url 'lesson_details' lesson.id %}"
                             class="font-medium text-blue-600 hover:underline">編集</a>
                     </td>
                 </tr>
