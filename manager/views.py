@@ -176,15 +176,15 @@ def lesson_list(request):
     return render(request, "lesson_list.html", {"lessons": lessons})
 
 @login_required(login_url='/login_user/')
-def genba_details(request, genba_id):
+def lesson_details(request, lesson_id):
     if request.user.is_authenticated:
-        genba = Genba.objects.get(id=genba_id)
-        form = GenbaForm(request.POST or None, instance=genba)
+        lesson = Lesson.objects.get(id=lesson_id)
+        form = LessonForm(request.POST or None, instance=lesson)
         if form.is_valid():
             form.save()
             messages.success(request, "現場を更新しました。")
-            return redirect("genba_list")
-        return render(request, "genba_details.html", {"form": form , "genba": genba })
+            return redirect("lesson_list")
+        return render(request, "lesson_details.html", {"form": form , "lesson": lesson })
     else:
         messages.success(request, "ログインしてください。")
         return redirect("login_user")
