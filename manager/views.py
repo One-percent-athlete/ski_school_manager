@@ -9,7 +9,7 @@ import datetime
 now = datetime.datetime.now()
 
 from .forms import LessonForm, SignUpForm, UserProfileForm
-from .models import Lesson, Profile
+from .models import Lesson, Notification, Profile
 
 @login_required(login_url='/login_user/')
 def home(request):
