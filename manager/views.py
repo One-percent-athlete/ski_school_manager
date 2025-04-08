@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render
 from django.utils.safestring import mark_safe
 from django.contrib.auth import authenticate, login, logout
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib import messages
 import calendar
 import datetime
 now = datetime.datetime.now()
@@ -10,8 +11,31 @@ now = datetime.datetime.now()
 from .forms import LessonForm, SignUpForm, UserProfileForm
 from .models import Lesson, Profile
 
+@login_required(login_url='/login_user/')
 def home(request):
-    return render(request, 'home.html', {})
+    if request.user.is_authenticated:
+        genba_list = Lesson.objects.all().order_by('-date_created')
+        genbas = []
+        for genba in genba_list:
+            date = datetime.datetime(now.year, now.month, now.day)
+            start_date = datetime.datetime(genba.start_date.year, genba.start_date.month, genba.start_date.day)
+            end_date = datetime.datetime(genba.end_date.year, genba.end_date.month, genba.end_date.day)
+            if start_date <= date <= end_date:
+                genbas.append(genba)
+                if request.user.profile.contract_type == '下請け':
+                    for genba in genbas:
+                        if genba.head_person != request.user.profile or request.user.profile not in genba.attendees.all():
+                            genbas.remove(genba)
+        if request.method == "POST":
+            content = request.POST.get("content")
+            author = User.objects.get(id=request.user.id)
+            notification = Notification.objects.create(content=content, author=author)
+            notification.save()
+        notifications = Notification.objects.all().order_by('-date_created')
+        return render(request, "home.html", {"genba_list":genba_list, "genbas": genbas, "notifications": notifications})
+    else:
+        messages.success(request, "ログインしてください。")
+        return redirect("login_user")
 
 def schedule(request):
     if request.user.is_authenticated:
