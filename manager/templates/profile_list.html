@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-作業員一覧
+教练一覧
 {% endblock %}
 
 {% block content %}
@@ -9,7 +9,7 @@
     {% else %}
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div class="px-auto">
-            <h1 class="text-4xl py-10">作業員一覧
+            <h1 class="text-4xl py-10">教练一覧
                 {% if contract == "管理" %}
                 <a class="pl-5" href="{% url 'register_user' %}">＋</a>
                 {% endif %}
