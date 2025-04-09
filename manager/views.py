@@ -43,8 +43,8 @@ def schedule(request):
         lessons_today = []
         for genba in lesson_list:
             date = datetime.datetime(now.year, now.month, now.day)
-            start_date = datetime.datetime(genba.start_date.year, genba.start_date.month, genba.start_date.day)
-            end_date = datetime.datetime(genba.end_date.year, genba.end_date.month, genba.end_date.day)
+            start_date = datetime.datetime(lesson.start_date.year, lesson.start_date.month, lesson.start_date.day)
+            end_date = datetime.datetime(lesson.end_date.yelesson.end_date.month, lesson.end_date.day)
             if start_date <= date <= end_date:
                 lessons_today.append(genba)
                 if request.user.profile.contract_type == '下請け':
