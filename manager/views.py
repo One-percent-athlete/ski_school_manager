@@ -124,7 +124,7 @@ def delete_user(request, user_id):
         messages.success(request, "プロフィールを削除しました。")
         return redirect("profile_list")
     else:
-        messages.success(request, "ログインしてください。")
+        messages.success(request, "请先登录。")
         return redirect("home")
     
 @login_required(login_url='/login_user/')
@@ -153,7 +153,7 @@ def update_profile(request, profile_id):
                 return redirect("profile_list")
             return render(request, "profile/update_profile.html", {"form": form , "profile": profile })
         else:
-            messages.success(request, "ログインしてください。")
+            messages.success(request, "请先登录。")
             return redirect("login_user")
     else:
         messages.success(request, ("ページは管理人のみがアクセスできます。"))
@@ -186,7 +186,7 @@ def lesson_details(request, lesson_id):
             return redirect("lesson_list")
         return render(request, "lesson/lesson_details.html", {"form": form , "lesson": lesson })
     else:
-        messages.success(request, "ログインしてください。")
+        messages.success(request, "请先登录。")
         return redirect("login_user")
 
 @login_required(login_url='/login_user/')
@@ -214,6 +214,6 @@ def delete_lesson(request, lesson_id):
         messages.success(request, "現場を削除しました。")
         return redirect("lesson_list")
     else:
-        messages.success(request, "ログインしてください。")
+        messages.success(request, "请先登录。")
         return redirect("login_user")
     
