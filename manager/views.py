@@ -48,9 +48,9 @@ def schedule(request):
             if start_date <= date <= end_date:
                 lessons_today.append(genba)
                 if request.user.profile.contract_type == '下請け':
-                    for genba in genbas_today:
-                        if genba.head_person != request.user.profile or request.user.profile not in genba.attendees.all():
-                            genbas_today.remove(genba)
+                    for lesson in lessons_today:
+                        if lesson.head_person != request.user.profile or request.user.profile not in lesson.attendees.all():
+                            lessons_today.remove(lesson)
     year = int(now.year)
     month = int(now.month)
     cal = calendar.HTMLCalendar().formatmonth(year, month)
@@ -58,8 +58,8 @@ def schedule(request):
     cal = mark_safe(cal)
     if request.user.is_authenticated:
          context = {
-            "genba_list": genba_list,
-            "genbas_today":genbas_today,
+            "lesson_list": lesson_list,
+            "lessons_today":lessons_today,
             "year": year,
             "month": month,
             "cal": cal,
