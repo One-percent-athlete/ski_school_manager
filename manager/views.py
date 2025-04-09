@@ -41,12 +41,12 @@ def schedule(request):
     if request.user.is_authenticated:
         lesson_list = Lesson.objects.all().order_by('-date_created')
         lessons_today = []
-        for genba in lesson_list:
+        for lesson in lesson_list:
             date = datetime.datetime(now.year, now.month, now.day)
             start_date = datetime.datetime(lesson.start_date.year, lesson.start_date.month, lesson.start_date.day)
-            end_date = datetime.datetime(lesson.end_date.yelesson.end_date.month, lesson.end_date.day)
+            end_date = datetime.datetime(lesson.end_date.year, lesson.end_date.month, lesson.end_date.day)
             if start_date <= date <= end_date:
-                lessons_today.append(genba)
+                lessons_today.append(lesson)
                 if request.user.profile.contract_type == '下請け':
                     for lesson in lessons_today:
                         if lesson.head_person != request.user.profile or request.user.profile not in lesson.attendees.all():
