@@ -196,10 +196,10 @@ def add_lesson(request):
         form = LessonForm(request.POST or None)
         if form.is_valid():
             form.save()
-            messages.success(request, ("現場を追加しました。"))
+            messages.success(request, ("课程拍好了。"))
             return redirect("lesson_list")
         else:
-            messages.success(request, ("再度お試しください。"))
+            messages.success(request, ("请再试一次。"))
             return redirect("lesson_list")
     else:
         return render(request, "lesson/add_lesson.html", {
@@ -211,7 +211,7 @@ def delete_lesson(request, lesson_id):
     if request.user.is_authenticated:
         current_lesson = Lesson.objects.get(id=lesson_id)
         current_lesson.delete()
-        messages.success(request, "現場を削除しました。")
+        messages.success(request, "课程已被消除。")
         return redirect("lesson_list")
     else:
         messages.success(request, "请先登录。")
