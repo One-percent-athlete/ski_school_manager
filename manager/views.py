@@ -81,7 +81,7 @@ def login_user(request):
                 messages.success(request, ("欢迎回来。"))
             return redirect("home")
         else:
-            messages.success(request, ("ユーザー名、またはパスワードが違います。再度お試しください。"))
+            messages.success(request, ("账号或者是密码错误。请再试一次。"))
             return redirect("login_user")
     else:
         return render(request, "authentication/login.html", {})  
@@ -89,7 +89,7 @@ def login_user(request):
 @login_required(login_url='/login_user/')
 def logout_user(request):
     logout(request)
-    messages.success(request, ("ログアウトしました。"))
+    messages.success(request, ("已注销。再见！"))
     return redirect("login_user")
 
 @login_required(login_url='/login_user/')
@@ -103,17 +103,17 @@ def register_user(request):
                 username = form.cleaned_data["username"]
                 password = form.cleaned_data["password1"]
                 user = authenticate(username=username, password=password)
-                messages.success(request, ("プロフィールを入力してください。"))
+                messages.success(request, ("请输入简历。"))
                 return redirect("update_profile", user.pk)
             else:
-                messages.success(request, ("再度お試しください。"))
+                messages.success(request, ("请再试一次。"))
                 return redirect("register_user")
         else:
             return render(request, "authentication/register_user.html", {
                 "form": form
             })
     else:
-        messages.success(request, ("ページは管理人のみがアクセスできます。"))
+        messages.success(request, ("只有管理人员可以访问此页面。"))
         return redirect("login_user")
     
 @login_required(login_url='/login_user/')
