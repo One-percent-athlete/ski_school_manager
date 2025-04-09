@@ -216,3 +216,5 @@ def delete_lesson(request, lesson_id):
     else:
         messages.success(request, "ログインしてください。")
         return redirect("login_user")
+    
+    

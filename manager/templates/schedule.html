@@ -16,7 +16,7 @@
             <h1 class="text-4xl py-10">本日の作業現場
                 {% if request.user.profile.contract_type == "下請け" %}
                 {% else %}
-                <a class="pl-8" href="{% url add_lesson %}">＋</a>
+                <a class="pl-8" href="{% url 'add_lesson' %}">＋</a>
                 {% endif %}
             </h1>
             <h2 class="text-6xl m-0 mr-3"></h2>
