@@ -34,7 +34,7 @@ def home(request):
         notifications = Notification.objects.all().order_by('-date_created')
         return render(request, "home.html", {"lesson_list":lesson_list, "lessons": lessons, "notifications": notifications})
     else:
-        messages.success(request, "ログインしてください。")
+        messages.success(request, "请先登录。")
         return redirect("login_user")
 
 def schedule(request):
@@ -76,9 +76,9 @@ def login_user(request):
         if user is not None:
             login(request, user)
             if user.profile:
-                messages.success(request, (f"{user.profile} さん, お帰りなさい。"))
+                messages.success(request, (f"{user.profile}， 欢迎回来。"))
             else:
-                messages.success(request, ("お帰りなさい。"))
+                messages.success(request, ("欢迎回来。"))
             return redirect("home")
         else:
             messages.success(request, ("ユーザー名、またはパスワードが違います。再度お試しください。"))
@@ -216,5 +216,4 @@ def delete_lesson(request, lesson_id):
     else:
         messages.success(request, "ログインしてください。")
         return redirect("login_user")
-    
     
