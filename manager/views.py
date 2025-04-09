@@ -121,7 +121,7 @@ def delete_user(request, user_id):
     if request.user.is_authenticated:
         current_user = Profile.objects.get(user__id=user_id)
         current_user.delete()
-        messages.success(request, "プロフィールを削除しました。")
+        messages.success(request, "简历消除了。")
         return redirect("profile_list")
     else:
         messages.success(request, "请先登录。")
@@ -149,14 +149,14 @@ def update_profile(request, profile_id):
             form = UserProfileForm(request.POST or None, instance=profile)
             if form.is_valid():
                 form.save()
-                messages.success(request, "プロフィールを更新しました。")
+                messages.success(request, "简历更新了。")
                 return redirect("profile_list")
             return render(request, "profile/update_profile.html", {"form": form , "profile": profile })
         else:
             messages.success(request, "请先登录。")
             return redirect("login_user")
     else:
-        messages.success(request, ("ページは管理人のみがアクセスできます。"))
+        messages.success(request, ("只有管理人员可以访问此页面。"))
 
 @login_required(login_url='/login_user/')
 def lesson_list(request):   
@@ -182,7 +182,7 @@ def lesson_details(request, lesson_id):
         form = LessonForm(request.POST or None, instance=lesson)
         if form.is_valid():
             form.save()
-            messages.success(request, "現場を更新しました。")
+            messages.success(request, "课程更新了。")
             return redirect("lesson_list")
         return render(request, "lesson/lesson_details.html", {"form": form , "lesson": lesson })
     else:
