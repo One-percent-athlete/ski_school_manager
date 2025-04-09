@@ -39,14 +39,14 @@ def home(request):
 
 def schedule(request):
     if request.user.is_authenticated:
-        genba_list = Lesson.objects.all().order_by('-date_created')
-        genbas_today = []
-        for genba in genba_list:
+        lesson_list = Lesson.objects.all().order_by('-date_created')
+        lessons_today = []
+        for genba in lesson_list:
             date = datetime.datetime(now.year, now.month, now.day)
             start_date = datetime.datetime(genba.start_date.year, genba.start_date.month, genba.start_date.day)
             end_date = datetime.datetime(genba.end_date.year, genba.end_date.month, genba.end_date.day)
             if start_date <= date <= end_date:
-                genbas_today.append(genba)
+                lessons_today.append(genba)
                 if request.user.profile.contract_type == '下請け':
                     for genba in genbas_today:
                         if genba.head_person != request.user.profile or request.user.profile not in genba.attendees.all():
