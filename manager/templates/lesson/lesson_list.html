@@ -7,20 +7,20 @@
 <div class="p-4 sm:ml-64">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div class="px-auto">
-            <h1 class="text-4xl py-10">現場一覧
+            <h1 class="text-4xl py-10">课程一覧
                 {% if request.user.profile.contract_type == "下請け" %}
                 {% else %}
                 <a class="pl-5" href="{% url 'add_lesson' %}">＋</a>
                 {% endif %}
                 {% if request.user.profile.contract_type == "管理" %}
                 <a class="ml-6 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                    href="{% url 'profile_lesson' %}">作業員毎現場</a>
+                    href="{% url 'profile_lesson' %}">教练别课程</a>
                 {% endif %}
             </h1>
             <form class="py-2 relative mx-auto text-gray-600" method="post">
                 {% csrf_token %}
                 <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-                    type="search" name="keyword" placeholder="現場名検索">
+                    type="search" name="keyword" placeholder="课程検索">
                 <button type="submit" class="m-auto px-2">
                     <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
