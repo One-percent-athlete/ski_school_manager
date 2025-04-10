@@ -222,4 +222,4 @@ def profile_lesson(request):
     if request.user.is_authenticated:
         profiles = Profile.objects.all()
         lessons = Lesson.objects.all().order_by('-date_created')
-    return render(request, "profile_lesson.html", {"profiles": profiles, "lessons": lessons})
+    return render(request, "lesson/profile_lesson.html", {"profiles": profiles, "lessons": lessons})
