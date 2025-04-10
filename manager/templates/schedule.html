@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-スケジュール
+排课表
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
     {% endif %}
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div class="px-auto">
-            <h1 class="text-4xl py-10">本日の作業現場
+            <h1 class="text-4xl py-10">今日课程
                 {% if request.user.profile.contract_type == "下請け" %}
                 {% else %}
                 <a class="pl-8" href="{% url 'add_lesson' %}">＋</a>
