@@ -45,7 +45,7 @@
             <form class="space-y-6" action="{% url 'login_user' %}" method="post">
                 {% csrf_token %}
                 <div>
-                    <label for="username" class="block text-sm/6 font-medium text-gray-900">ユーザー名</label>
+                    <label for="username" class="block text-sm/6 font-medium text-gray-900">账号</label>
                     <div class="mt-2">
                         <input id="username" name="username" type="text" autocomplete="username" required
                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-sky-500 sm:text-sm/6">
@@ -53,7 +53,7 @@
                 </div>
                 <div>
                     <div class="flex items-center justify-between">
-                        <label for="password" class="block text-sm/6 font-medium text-gray-900">パスワード</label>
+                        <label for="password" class="block text-sm/6 font-medium text-gray-900">密码</label>
                     </div>
                     <div class="mt-2">
                         <input id="password" name="password" type="password" autocomplete="current-password" required
@@ -62,10 +62,10 @@
                 </div>
                 <div>
                     <button type="submit"
-                        class="flex w-full justify-center rounded-md bg-sky-500 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700">ログイン</button>
+                        class="flex w-full justify-center rounded-md bg-sky-500 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700">登录</button>
                 </div>
             </form>
-            <p><a href="#">ユーザー登録</a></p>
+            <p><a href="{% url 'register_user' %}">登録</a></p>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
