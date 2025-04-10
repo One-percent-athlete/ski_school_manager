@@ -37,7 +37,7 @@
             },
             events:
                 [
-                    {% for lesson in lesosn_list %}
+                    {% for lesson in lesson_list %}
                     {
                 title: '{{ lesson.name }} : {{ lesson.head_person }} {% for a in lesson.attendees.all %} , {{ a }} {% endfor %}',
                 start: '{{ lesson.start_date | date:"Y-m-d" }}',
