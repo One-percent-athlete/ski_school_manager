@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-教练一覧
+教练管理人员一覧
 {% endblock %}
 
 {% block content %}
@@ -9,7 +9,7 @@
     {% else %}
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div class="px-auto">
-            <h1 class="text-4xl py-10">教练一覧
+            <h1 class="text-4xl py-10">教练管理人员一覧
                 {% if contract == "管理" %}
                 <a class="pl-5" href="{% url 'register_user' %}">＋</a>
                 {% endif %}
@@ -17,7 +17,7 @@
             <form class="py-2 relative mx-auto text-gray-600" method="post">
                 {% csrf_token %}
                 <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-                    type="search" name="keyword" placeholder="作業員名前検索">
+                    type="search" name="keyword" placeholder="教练管理人员検索">
                 <button type="submit" class="m-auto px-2">
                     <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
@@ -88,7 +88,7 @@
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div class="px-auto">
-            <h1 class="text-4xl py-10">過去作業員一覧</h1>
+            <h1 class="text-4xl py-10">過去人员一覧</h1>
             <h2 class="text-6xl m-0 mr-3"></h2>
         </div>
         <table class="w-full text-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
