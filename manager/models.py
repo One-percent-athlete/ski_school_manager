@@ -46,6 +46,7 @@ class Profile(models.Model):
     tixi = models.CharField("体系", max_length=50, choices=SYSTEM, default='加拿大')
     jibie = models.CharField("级别", max_length=50, choices=LEVEL, default='1级')
     sushe = models.CharField("宿舍", max_length=20, blank=True)
+    commission = models.DecimalField("提成", max_digits=10, decimal_places=2, default=0.00)
     note = models.CharField("備考", max_length=500, blank=True)
     is_active = models.BooleanField("現役中", default=True)
     date_created = models.DateTimeField("作成日", auto_now_add=True)
