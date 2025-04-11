@@ -22,10 +22,10 @@ def home(request):
             end_date = datetime.datetime(lesson.end_date.year, lesson.end_date.month, lesson.end_date.day)
             if start_date <= date <= end_date:
                 lessons.append(lesson)
-                if request.user.profile.contract_type == '下請け':
-                    for genba in lessons:
-                        if genba.head_person != request.user.profile or request.user.profile not in lesson.attendees.all():
-                            lessons.remove(lesson)
+                # if request.user.profile.contract_type == '下請け':
+                #     for genba in lessons:
+                #         if genba.head_person != request.user.profile or request.user.profile not in lesson.attendees.all():
+                #             lessons.remove(lesson)
         if request.method == "POST":
             content = request.POST.get("content")
             author = User.objects.get(id=request.user.id)
@@ -47,10 +47,10 @@ def schedule(request):
             end_date = datetime.datetime(lesson.end_date.year, lesson.end_date.month, lesson.end_date.day)
             if start_date <= date <= end_date:
                 lessons_today.append(lesson)
-                if request.user.profile.contract_type == '下請け':
-                    for lesson in lessons_today:
-                        if lesson.head_person != request.user.profile or request.user.profile not in lesson.attendees.all():
-                            lessons_today.remove(lesson)
+                # if request.user.profile.contract_type == '下請け':
+                #     for lesson in lessons_today:
+                #         if lesson.head_person != request.user.profile or request.user.profile not in lesson.attendees.all():
+                #             lessons_today.remove(lesson)
     year = int(now.year)
     month = int(now.month)
     cal = calendar.HTMLCalendar().formatmonth(year, month)
@@ -162,17 +162,17 @@ def update_profile(request, profile_id):
 def lesson_list(request):   
     if request.user.is_authenticated:
         lesson_list = Lesson.objects.all().order_by('-date_created')
-        genbas = []
+        lessons = []
         if request.method == "POST":
             keyword = request.POST['keyword']
             result_list = Lesson.objects.filter(name__contains=keyword).order_by('-date_created')
             return render(request, "lesson/lesson_search_list.html", {"result_list": result_list, "keyword": keyword})
-        if request.user.profile.contract_type == '下請け':
-            for lesson in lesson_list:
-                if lesson.head_person == request.user.profile or request.user.profile in lesson.attendees.all():
-                    lesson.append(lesson)
-        else:
-            lessons = lesson_list
+            # # if request.user.profile.contract_type == '下請け':
+            # #     for lesson in lesson_list:
+            # #         if lesson.head_person == request.user.profile or request.user.profile in lesson.attendees.all():
+            # #             lesson.append(lesson)
+            # else:
+                # lessons = lesson_list
     return render(request, "lesson/lesson_list.html", {"lessons": lessons})
 
 @login_required(login_url='/login_user/')
