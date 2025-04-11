@@ -84,7 +84,7 @@ def login_user(request):
             messages.success(request, ("账号或者是密码错误。请再试一次。"))
             return redirect("login_user")
     else:
-        return render(request, "authentication/login.html", {})  
+        return render(request, "authentication/login.html", {}) 
 
 @login_required(login_url='/login_user/')
 def logout_user(request):
