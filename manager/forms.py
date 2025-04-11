@@ -28,8 +28,8 @@ class SignUpForm(UserCreationForm):
 		
 class UserProfileForm(forms.ModelForm):
 	CHOICE = [
-       	('下請け', '下請け'),
-        ('正社員', '正社員'),
+       	('其他', '其他'),
+        ('教练', '教练'),
         ('管理', '管理'),]
 	fullname = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'お名前スペースなし'}))
 	phone = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'携帯電話番号: 07012345678'}))
