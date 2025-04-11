@@ -66,8 +66,8 @@ post_save.connect(create_profile, sender=User)
 class Lesson(models.Model):
     PAYMENT_TYPES = (
         ('現金','現金'),
-        ('カード', 'カード'),
-        ('電子マネー', '電子マネー'),
+        ('刷卡', '刷卡'),
+        ('電子支付', '電子支付'),
         ('未支付', '未支付'),
         )
     instructors = models.ManyToManyField(Profile, related_name="instructors", blank=False)
