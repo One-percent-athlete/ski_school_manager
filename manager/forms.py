@@ -19,7 +19,7 @@ class SignUpForm(UserCreationForm):
 		self.fields['password1'].widget.attrs['class'] = 'form-control w-full p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'
 		self.fields['password1'].widget.attrs['placeholder'] = '密码'
 		self.fields['password1'].label = ''
-		self.fields['password1'].help_text = '<ul class="form-text text-muted small"><li>ユーザー名と一致しない</li><li>8文字以上</li><li>数字のみ不可</li></ul>'
+		self.fields['password1'].help_text = '<ul class="form-text text-muted small"><li>不可以和账号相同</li><li>8文字以上</li><li>不可使用数字</li></ul>'
 
 		self.fields['password2'].widget.attrs['class'] = 'form-control w-full p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'
 		self.fields['password2'].widget.attrs['placeholder'] = '確認パスワード'
