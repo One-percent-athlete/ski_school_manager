@@ -14,7 +14,7 @@ class SignUpForm(UserCreationForm):
 		self.fields['username'].widget.attrs['class'] = 'form-control w-full p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'
 		self.fields['username'].widget.attrs['placeholder'] = '账号名'
 		self.fields['username'].label = ''
-		self.fields['username'].help_text = '<ul class="form-text text-muted small"><li>記号、スペースなし</li><li>150文字以下</li></ul>'
+		self.fields['username'].help_text = '<ul class="form-text text-muted small"><li>不可以使用记号以及空格</li><li>150文字以下</li></ul>'
 
 		self.fields['password1'].widget.attrs['class'] = 'form-control w-full p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'
 		self.fields['password1'].widget.attrs['placeholder'] = '密码'
