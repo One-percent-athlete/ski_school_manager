@@ -70,6 +70,14 @@ class Lesson(models.Model):
         ('電子支付', '電子支付'),
         ('未支付', '未支付'),
         )
+    PLACE = (
+        ('比洛夫', '比洛夫'),
+        ('花园', '花园'),
+        ('安努', '安努'),
+        ('莫伊哇', '莫伊哇'),
+        ('留寿都', '留寿都'),
+        ('喜乐乐', '喜乐乐'),
+    )
     instructors = models.ManyToManyField(Profile, related_name="instructors", blank=False)
     client = models.CharField("客人姓名", max_length=255)
     address = models.CharField("酒店", max_length=255)
