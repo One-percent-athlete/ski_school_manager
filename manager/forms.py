@@ -53,7 +53,7 @@ class UserProfileForm(forms.ModelForm):
 
 	class Meta:
 		model = Profile
-		fields = ('fullname', 'phone', 'note', 'contract_type', 'is_active')
+		fields = ('fullname', 'phone', 'note', 'contract_type', 'is_active'， 'color')
 
 class LessonForm(forms.ModelForm):
 	
