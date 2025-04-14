@@ -54,7 +54,7 @@ class Profile(models.Model):
     tixi = models.CharField("体系", max_length=50, choices=SYSTEM, default='加拿大')
     ski = models.CharField("级别", max_length=50, choices=SKI, default='双板1级')
     snowboard = models.CharField("级别", max_length=50, choices=SNOWBOARD, default='单板1级')
-    sushe = models.CharField("宿舍", max_length=20, blank=True)
+    accommodation = models.CharField("宿舍", max_length=20, blank=True)
     commission = models.DecimalField("提成", max_digits=10, decimal_places=2, default=0.00)
     note = models.CharField("備考", max_length=500, blank=True)
     is_active = models.BooleanField("現役中", default=True)
