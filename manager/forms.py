@@ -27,13 +27,8 @@ class SignUpForm(UserCreationForm):
 		self.fields['password2'].help_text = '<ul class="form-text text-muted small"><li>再度パスワード入力</li></ul>'
 		
 class UserProfileForm(forms.ModelForm):
-	CHOICE = [
-       	('其他', '其他'),
-        ('教练', '教练'),
-        ('管理', '管理'),]
-	
 	COLORS = [
-		('#808080', '灰色'),
+        ('#808080', '灰色'),
         ('#ff6961', '赤色'),
         ('#ffb480', '橙色'),
         ('#f8f38d', '黄色'),
@@ -43,11 +38,45 @@ class UserProfileForm(forms.ModelForm):
         ('#9d94ff', '紫色'),
         ('#c780e8', '桃色'),
     ]
-
+	TYPE = [
+        ('管理', '管理'),
+        ('教练', '教练'),
+        ('其他', '其他'),
+    ]
+	SKI = [
+        ('双板无极', '双板无极'),
+        ('双板1级', '双板1级'),
+        ('双板2级', '双板2级'),
+        ('双板3级', '双板3级'),
+        ('双板4级', '双板4级'),
+    ]
+	SNOWBOARD = [
+        ('单板无极', '单板无极'),
+        ('单板1级', '单板1级'),
+        ('单板2级', '单板2级'),
+        ('单板3级', '单板3级'),
+        ('单板4级', '单板4级'),
+    ]
+	SKISYSTEM = [
+        ('加拿大', '加拿大'),
+        ('新西兰', '新西兰'),
+        ('澳洲', '澳洲'),
+        ('日本', '日本'),
+        ('其他', '其他'),
+        ('无', '无'),
+    ]
+	SNOWBOARDSYSTEM = [
+        ('加拿大', '加拿大'),
+        ('新西兰', '新西兰'),
+        ('澳洲', '澳洲'),
+        ('日本', '日本'),
+        ('其他', '其他'),
+        ('无', '无'),
+    ]
 	fullname = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'姓名'}))
 	phone = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'電話号码: 07012345678'}))
 	note = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'注意事項'}))
-	contract_type = forms.ChoiceField(label="职务", choices=CHOICE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+	contract_type = forms.ChoiceField(label="职务", choices=TYPE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 	is_active = forms.BooleanField(label="現役中", required=False)
 	color = forms.ChoiceField(label="日历表示色", choices=COLORS, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 
@@ -62,7 +91,7 @@ class LessonForm(forms.ModelForm):
         ('刷卡', '刷卡'),
         ('電子支付', '電子支付'),
         ('未支付', '未支付'),
-        ]
+    ]
 	
 	PLACE = [
         ('比洛夫', '比洛夫'),
