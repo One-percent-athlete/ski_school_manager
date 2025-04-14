@@ -103,7 +103,7 @@ class Lesson(models.Model):
     date_created = models.DateTimeField("作成日", auto_now_add=True)
 
     def __str__(self):
-        return f"{self.name} - {self.client}"
+        return f"{self.instructors} - {self.client}"
     
     @property
     def Is_past(self):
@@ -120,4 +120,4 @@ class Notification(models.Model):
     date_created = models.DateTimeField("作成日", auto_now_add=True)
     
     def __str__(self):
-        return f"{self.content} - {self.author} - {self.created_at}"
+        return f"{self.content} - {self.author} - {self.date_created}"
