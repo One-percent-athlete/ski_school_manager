@@ -21,18 +21,18 @@ class Profile(models.Model):
         ('其他', '其他'),
     )
     SKI = (
-        ('单板无极', '单板无极'),
-        ('单板1级', '单板1级'),
-        ('单板2级', '单板2级'),
-        ('单板3级', '单板3级'),
-        ('单板4级', '单板4级')
-        ),
-    SNOWBOARD = (
         ('双板无极', '双板无极'),
         ('双板1级', '双板1级'),
         ('双板2级', '双板2级'),
         ('双板3级', '双板3级'),
         ('双板4级', '双板4级'),
+    )
+    SNOWBOARD = (
+        ('单板无极', '单板无极'),
+        ('单板1级', '单板1级'),
+        ('单板2级', '单板2级'),
+        ('单板3级', '单板3级'),
+        ('单板4级', '单板4级'),
     )
     SKISYSTEM = (
         ('加拿大', '加拿大'),
@@ -100,7 +100,7 @@ class Lesson(models.Model):
     instructors = models.ManyToManyField(Profile, related_name="instructors", blank=False)
     client = models.CharField("客人姓名", max_length=255)
     address = models.CharField("酒店", max_length=255)
-    jibie = models.CharField("级别", max_length=255)
+    level = models.CharField("级别", max_length=255)
     place = models.CharField("雪场", max_length=50, choices=PLACE, default='比洛夫')
     job_description = models.CharField("内容", max_length=255, blank=True, null=True)
     payment_type = models.CharField("付款方式", max_length=50, choices=PAYMENT_TYPES, default='未支付')

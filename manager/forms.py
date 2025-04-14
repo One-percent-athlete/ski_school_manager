@@ -86,7 +86,7 @@ class LessonForm(forms.ModelForm):
 
 	class Meta:
 		model = Lesson
-		fields = ('attendees', 'name', 'client', 'address', 'job_description','note', 'finished', 'start_date', 'end_date', 'color')
+		fields = ('attendees', 'name', 'client', 'address', 'job_description','note', 'finished', 'start_date', 'end_date', 'payment_type', 'place', 'payment_amount', 'payment_date')
 		labels = {
 			'head_person':'職長',
 			'attendees': '同行者',
