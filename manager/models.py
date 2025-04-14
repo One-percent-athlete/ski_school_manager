@@ -34,12 +34,21 @@ class Profile(models.Model):
         ('双板3级', '双板3级'),
         ('双板4级', '双板4级'),
     )
-    SYSTEM = (
+    SKISYSTEM = (
         ('加拿大', '加拿大'),
         ('新西兰', '新西兰'),
         ('澳大利亚', '澳大利亚'),
         ('日本', '日本'),
         ('其他', '其他'),
+        ('无', '无'),
+    )
+    SNOWBOARDSYSTEM = (
+        ('加拿大', '加拿大'),
+        ('新西兰', '新西兰'),
+        ('澳大利亚', '澳大利亚'),
+        ('日本', '日本'),
+        ('其他', '其他'),
+        ('无', '无'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday = models.DateField("生年月日", blank=True, null=True)
@@ -51,7 +60,8 @@ class Profile(models.Model):
     weixin = models.CharField("微信", max_length=20, blank=True)
     whatsapp = models.CharField("Whatsapp", max_length=20, blank=True)
     line = models.CharField("LINE", max_length=20, blank=True)
-    tixi = models.CharField("体系", max_length=50, choices=SYSTEM, default='加拿大')
+    skisystem = models.CharField("双板体系", max_length=50, choices=SKISYSTEM, default='加拿大')
+    snowboardsystem = models.CharField("单板体系", max_length=50, choices=SNOWBOARDSYSTEM, default='加拿大')
     ski = models.CharField("级别", max_length=50, choices=SKI, default='双板1级')
     snowboard = models.CharField("级别", max_length=50, choices=SNOWBOARD, default='单板1级')
     accommodation = models.CharField("宿舍", max_length=20, blank=True)
