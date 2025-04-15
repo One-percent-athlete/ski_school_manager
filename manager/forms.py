@@ -120,4 +120,3 @@ class LessonForm(forms.ModelForm):
 			'head_person':'',
 			'attendees': '',
 		}
-
