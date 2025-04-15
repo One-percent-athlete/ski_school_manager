@@ -74,7 +74,6 @@ class Profile(models.Model):
     def __str__(self):
         return f"{self.fullname}"
     
-
 def create_profile(sender, instance, created, **kwargs):
     if created:
         user_profile = Profile(user=instance)
