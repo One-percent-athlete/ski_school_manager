@@ -223,3 +223,4 @@ def profile_lesson(request):
         profiles = Profile.objects.all()
         lessons = Lesson.objects.all().order_by('-date_created')
     return render(request, "lesson/profile_lesson.html", {"profiles": profiles, "lessons": lessons})
+

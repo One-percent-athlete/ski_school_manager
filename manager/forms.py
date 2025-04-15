@@ -120,3 +120,4 @@ class LessonForm(forms.ModelForm):
 			'head_person':'職長',
 			'attendees': '同行者',
 		}
+
