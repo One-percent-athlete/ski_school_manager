@@ -57,7 +57,7 @@ class UserProfileForm(forms.ModelForm):
         ('单板3级', '单板3级'),
         ('单板4级', '单板4级'),
     ]
-	SKISYSTEM = [
+	SKI_SYSTEM = [
         ('加拿大', '加拿大'),
         ('新西兰', '新西兰'),
         ('澳洲', '澳洲'),
@@ -65,7 +65,7 @@ class UserProfileForm(forms.ModelForm):
         ('其他', '其他'),
         ('无', '无'),
     ]
-	SNOWBOARDSYSTEM = [
+	SNOWBOARD_SYSTEM = [
         ('加拿大', '加拿大'),
         ('新西兰', '新西兰'),
         ('澳洲', '澳洲'),
