@@ -57,7 +57,7 @@ class Profile(models.Model):
     fullname = models.CharField("姓名", max_length=20, blank=True)
     phone = models.CharField("電話", max_length=20, blank=True)
     email = models.CharField("邮箱", max_length=20, blank=True)
-    weixin = models.CharField("微信", max_length=20, blank=True)
+    wechat = models.CharField("微信", max_length=20, blank=True)
     whatsapp = models.CharField("Whatsapp", max_length=20, blank=True)
     line = models.CharField("LINE", max_length=20, blank=True)
     ski_system = models.CharField("双板体系", max_length=50, choices=SKI_SYSTEM, default='加拿大')
