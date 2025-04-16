@@ -73,23 +73,20 @@ class UserProfileForm(forms.ModelForm):
         ('其他', '其他'),
         ('无', '无'),
     ]
-    wechat = models.CharField("微信", max_length=20, blank=True)
-    whatsapp = models.CharField("Whatsapp", max_length=20, blank=True)
-    line = models.CharField("LINE", max_length=20, blank=True)
-    ski_system = models.CharField("双板体系", max_length=50, choices=SKI_SYSTEM, default='加拿大')
-    snowboard_system = models.CharField("单板体系", max_length=50, choices=SNOWBOARD_SYSTEM, default='加拿大')
-    ski = models.CharField("级别", max_length=50, choices=SKI, default='双板1级')
-    snowboard = models.CharField("级别", max_length=50, choices=SNOWBOARD, default='单板1级')
-    accommodation = models.CharField("宿舍", max_length=20, blank=True)
-    commission = models.DecimalField("提成", max_digits=10, decimal_places=2, default=0.00)
-    note = models.CharField("備考", max_length=500, blank=True)
-    is_active = models.BooleanField("現役中", default=True)
-    date_created = models.DateTimeField("作成日", auto_now_add=True)
-    updated_at
+   
 	fullname = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'姓名'}))
-    birthday = forms.DateField(label='生日', widget=forms.DateInput(attrs={'type': 'date', 'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'}))
+	birthday = forms.DateField(label='生日', widget=forms.DateInput(attrs={'type': 'date', 'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'}))
 	phone = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'電話号码: 07012345678'}))
-    email = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'电子邮箱: 1234@gmail'}))
+	email = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'电子邮箱: 1234@gmail'}))
+	wechat = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'电子邮箱: 1234@gmail'}))
+    whatsapp = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'电子邮箱: 1234@gmail'}))
+    line = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'电子邮箱: 1234@gmail'}))
+    ski_system = forms.ChoiceField(label="双板体系", choices=SKI_SYSTEM, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    snowboard_system = forms.ChoiceField(label="单板体系", choices=SNOWBOARD_SYSTEM, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    ski = forms.ChoiceField(label="双板级别", choices=SKI, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    snowboard = forms.ChoiceField(label="单板级别", choices=SNOWBOARD, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+    accommodation = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'宿舍'}))
+    commission = forms.DecimalField(label="", max_digits=10, decimal_places=2, widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'提成'}))
 
 	note = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'注意事項'}))
 	contract_type = forms.ChoiceField(label="职务", choices=TYPE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
