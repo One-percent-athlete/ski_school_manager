@@ -94,7 +94,7 @@ class UserProfileForm(forms.ModelForm):
 
 	class Meta:
 		model = Profile
-		fields = ('fullname', 'color', 'birthday', 'phone', 'email', 'wechat', 'whatsapp', 'line')
+		fields = ('fullname', 'color', 'birthday', 'phone', 'email', 'wechat', 'whatsapp', 'line', 'ski_system', 'snowboard_system', 'ski', 'snowboard', 'accommodation', 'commission', 'note', 'contract_type', 'is_active')
 
 class LessonForm(forms.ModelForm):
 	
