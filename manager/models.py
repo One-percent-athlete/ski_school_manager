@@ -34,7 +34,7 @@ class Profile(models.Model):
         ('单板3级', '单板3级'),
         ('单板4级', '单板4级'),
     )
-    SKISYSTEM = (
+    SKI_SYSTEM = (
         ('加拿大', '加拿大'),
         ('新西兰', '新西兰'),
         ('澳洲', '澳洲'),
@@ -42,7 +42,7 @@ class Profile(models.Model):
         ('其他', '其他'),
         ('无', '无'),
     )
-    SNOWBOARDSYSTEM = (
+    SNOWBOARD_SYSTEM = (
         ('加拿大', '加拿大'),
         ('新西兰', '新西兰'),
         ('澳洲', '澳洲'),
@@ -60,8 +60,8 @@ class Profile(models.Model):
     weixin = models.CharField("微信", max_length=20, blank=True)
     whatsapp = models.CharField("Whatsapp", max_length=20, blank=True)
     line = models.CharField("LINE", max_length=20, blank=True)
-    skisystem = models.CharField("双板体系", max_length=50, choices=SKISYSTEM, default='加拿大')
-    snowboardsystem = models.CharField("单板体系", max_length=50, choices=SNOWBOARDSYSTEM, default='加拿大')
+    ski_system = models.CharField("双板体系", max_length=50, choices=SKI_SYSTEM, default='加拿大')
+    snowboard_system = models.CharField("单板体系", max_length=50, choices=SNOWBOARD_SYSTEM, default='加拿大')
     ski = models.CharField("级别", max_length=50, choices=SKI, default='双板1级')
     snowboard = models.CharField("级别", max_length=50, choices=SNOWBOARD, default='单板1级')
     accommodation = models.CharField("宿舍", max_length=20, blank=True)
@@ -95,6 +95,7 @@ class Lesson(models.Model):
         ('莫伊哇', '莫伊哇'),
         ('留寿都', '留寿都'),
         ('喜乐乐', '喜乐乐'),
+        ('其他', '其他'),
     )
     instructors = models.ManyToManyField(Profile, related_name="instructors", blank=False)
     client = models.CharField("客人姓名", max_length=255)
