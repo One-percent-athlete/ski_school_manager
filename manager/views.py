@@ -224,7 +224,7 @@ def profile_lesson(request):
     return render(request, "lesson/profile_lesson.html", {"profiles": profiles, "lessons": lessons})
 
 @login_required(login_url='/login_user/')
-def commisson(request):
+def commission(request):
     if request.user.is_authenticated:
         lessons = Lesson.objects.all().order_by('-date_created')
         commission = 0
