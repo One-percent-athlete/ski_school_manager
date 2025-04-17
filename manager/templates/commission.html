@@ -5,14 +5,9 @@
 
 {% block content %}
 <div class="p-4 sm:ml-64">
-    {% if contract == "下請け" %}
-    {% else %}
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div class="px-auto">
             <h1 class="text-4xl py-10">账单一覧
-                {% if contract == "管理" %}
-                <a class="pl-5" href="{% url 'register_user' %}">＋</a>
-                {% endif %}
             </h1>
             <form class="py-2 relative mx-auto text-gray-600" method="post">
                 {% csrf_token %}
@@ -86,6 +81,5 @@
             </tbody>
         </table>
     </div>
-    {% endif %}
 </div>
 {% endblock %}
