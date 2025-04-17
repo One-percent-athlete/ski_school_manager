@@ -39,7 +39,7 @@
                 [
                     {% for lesson in lesson_list %}
                     {
-                title: '{{ lesson.name }} : {{ lesson.head_person }} {% for a in lesson.attendees.all %} , {{ a }} {% endfor %}',
+                title: '{{ lesson.client }} : {{ lesson.place }} {% for a in lesson.instructors.all %} , {{ a }} {% endfor %}',
                 start: '{{ lesson.start_date | date:"Y-m-d" }}',
                 end: '{{ lesson.end_date | date:"Y-m-d 23:59:59" }}',
                 color: '{{ lesson.color }}',
