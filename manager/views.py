@@ -228,8 +228,6 @@ def commission(request):
     if request.user.is_authenticated:
         lessons = Lesson.objects.all().order_by('-date_created')
         commission = 0
-        for lesson in lessons:
-            commission += lesson.payment_amount
         return render(request, "commission/commission.html", {"lessons": lessons, "commission": commission})
     else:
         messages.success(request, "请先登录。")
