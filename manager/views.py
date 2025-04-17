@@ -223,3 +223,14 @@ def profile_lesson(request):
         lessons = Lesson.objects.all().order_by('-date_created')
     return render(request, "lesson/profile_lesson.html", {"profiles": profiles, "lessons": lessons})
 
+@login_required(login_url='/login_user/')
+def commisson(request):
+    if request.user.is_authenticated:
+        lessons = Lesson.objects.all().order_by('-date_created')
+        commission = 0
+        for lesson in lessons:
+            commission += lesson.payment_amount
+        return render(request, "commission/commission.html", {"lessons": lessons, "commission": commission})
+    else:
+        messages.success(request, "请先登录。")
+        return redirect("login_user")
