@@ -228,7 +228,7 @@ def commission(request):
     if request.user.is_authenticated:
         lessons = Lesson.objects.all().order_by('-date_created')
         commission = 0
-        return render(request, "commission/commission.html", {"lessons": lessons, "commission": commission})
+        return render(request, "commission.html", {"lessons": lessons, "commission": commission})
     else:
         messages.success(request, "请先登录。")
         return redirect("login_user")
