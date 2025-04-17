@@ -226,9 +226,9 @@ def profile_lesson(request):
 @login_required(login_url='/login_user/')
 def commission(request):
     if request.user.is_authenticated:
-        lessons = Lesson.objects.all().order_by('-date_created')
-        commission = 0
-        return render(request, "commission.html", {"lessons": lessons, "commission": commission})
+        profiles = Profile.objects.all()
+        lessons = Lesson.objects.all()
+        return render(request, "commission.html", {"profiles": profiles, "lessons": lessons})
     else:
         messages.success(request, "请先登录。")
         return redirect("login_user")
