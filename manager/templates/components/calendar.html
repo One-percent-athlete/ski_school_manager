@@ -39,12 +39,14 @@
                 [
                     {% for lesson in lesson_list %}
                     {
-                title: '{{ lesson.client }} : {{ lesson.place }} {% for a in lesson.instructors.all %} , {{ a }} {% endfor %}',
-                start: '{{ lesson.start_date | date:"Y-m-d" }}',
-                end: '{{ lesson.end_date | date:"Y-m-d 23:59:59" }}',
-                color: '{% for a in lesson.instructors.all %} , {{ a.color }} {% endfor %}',
+                        {% for a in lesson.instructors.all %} 
+                            title: '{{ lesson.client }} : {{ lesson.place }} , {{ a }}',
+        start: '{{ lesson.start_date | date:"Y-m-d" }}',
+        end: '{{ lesson.end_date | date:"Y-m-d 23:59:59" }}',
+        color: '{{ a.color }}',
+        {% endfor %}
             },
-            {% endfor %}
+        {% endfor %}
             ],
         displayEventTime: false,
         });
