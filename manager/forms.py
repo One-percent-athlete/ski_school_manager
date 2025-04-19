@@ -117,17 +117,17 @@ class LessonForm(forms.ModelForm):
 	attendees = forms.ModelMultipleChoiceField(label="教练", queryset=Profile.objects.all(), widget=forms.CheckboxSelectMultiple)
 	name = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder': '客人名'}))
 	address = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder': '場所'}))
+	place = forms.ChoiceField(label="雪场", choices=PLACE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 	job_description = forms.CharField(label="",required=False, widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', "placeholder": "作業内容"}))
 	note = forms.CharField(label="", required=False, widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', "placeholder": "連絡事項"}))
 	finished = forms.BooleanField(label="完了", required=False)
 	start_date = forms.DateField(label='作業開始日', widget=forms.DateInput(attrs={'type': 'date', 'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'}))
 	end_date = forms.DateField(label='作業終了日', widget=forms.DateInput(attrs={'type': 'date', 'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'}))
 	payment_type = forms.ChoiceField(label="支付方式", choices=PAYMENT_TYPES, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
-	place = forms.ChoiceField(label="雪场", choices=PLACE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 
 	class Meta:
 		model = Lesson
-		fields = ('attendees', 'name', 'client', 'address', 'job_description','note', 'finished', 'start_date', 'end_date', 'payment_type', 'place', 'payment_amount', 'payment_date')
+		fields = ('attendees', 'name', 'address', 'job_description','note', 'finished', 'start_date', 'end_date', 'payment_type', 'place', 'payment_amount', 'payment_date')
 		labels = {
 			'attendees': '',
 		}
