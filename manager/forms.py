@@ -129,6 +129,5 @@ class LessonForm(forms.ModelForm):
 		model = Lesson
 		fields = ('attendees', 'name', 'client', 'address', 'job_description','note', 'finished', 'start_date', 'end_date', 'payment_type', 'place', 'payment_amount', 'payment_date')
 		labels = {
-			'head_person':'',
 			'attendees': '',
 		}
