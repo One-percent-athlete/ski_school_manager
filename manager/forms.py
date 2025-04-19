@@ -127,7 +127,7 @@ class LessonForm(forms.ModelForm):
 
 	class Meta:
 		model = Lesson
-		fields = ('attendees', 'name', 'address', 'job_description','note', 'finished', 'start_date', 'end_date', 'payment_type', 'place', 'payment_amount', 'payment_date')
+		fields = ('attendees', 'name', 'address', 'place', 'job_description','note', 'finished', 'start_date', 'end_date', 'payment_type', 'payment_amount', 'payment_date')
 		labels = {
 			'attendees': '',
 		}
