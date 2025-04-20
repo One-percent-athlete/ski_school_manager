@@ -102,7 +102,6 @@ class Lesson(models.Model):
     lesson_type = models.CharField("课程类型", max_length=50, blank=True, null=True)
     client = models.CharField("客人姓名", max_length=255)
     address = models.CharField("酒店", max_length=255)
-    level = models.CharField("级别", max_length=255)
     place = models.CharField("雪场", max_length=50, choices=PLACE, default='比洛夫')
     payment_type = models.CharField("付款方式", max_length=50, choices=PAYMENT_TYPES, default='未支付')
     payment_amount = models.DecimalField("付款金額", max_digits=10, decimal_places=2, blank=True, null=True)
