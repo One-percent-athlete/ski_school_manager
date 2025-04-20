@@ -131,5 +131,5 @@ class LessonForm(forms.ModelForm):
 		model = Lesson
 		fields = ('instructors', 'client', 'address', 'place', 'note', 'finished', 'start_date', 'end_date', 'payment_type', 'payment_amount', 'payment_date')
 		labels = {
-			'attendees': '',
+			'instructors': '',
 		}
