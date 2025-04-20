@@ -89,7 +89,7 @@ def login_user(request):
 @login_required(login_url='/login_user/')
 def logout_user(request):
     logout(request)
-    messages.success(request, ("已注销。再见！"))
+    messages.success(request, ("已退出。下次再见。"))
     return redirect("login_user")
 
 @login_required(login_url='/login_user/')
@@ -232,4 +232,3 @@ def commission(request):
     else:
         messages.success(request, "请先登录。")
         return redirect("login_user")
-    
