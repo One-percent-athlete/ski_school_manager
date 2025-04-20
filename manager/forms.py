@@ -113,8 +113,23 @@ class LessonForm(forms.ModelForm):
         ('留寿都', '留寿都'),
         ('喜乐乐', '喜乐乐'),
     ]
+	
+    lesson_type = models.CharField("课程类型", max_length=50, blank=True, null=True)
+    client = models.CharField("客人姓名", max_length=255)
+    address = models.CharField("酒店", max_length=255)
+    level = models.CharField("级别", max_length=255)
+    place = models.CharField("雪场", max_length=50, choices=PLACE, default='比洛夫')
+    payment_type = models.CharField("付款方式", max_length=50, choices=PAYMENT_TYPES, default='未支付')
+    payment_amount = models.DecimalField("付款金額", max_digits=10, decimal_places=2, blank=True, null=True)
+    payment_date = models.DateTimeField("付款日", blank=True, null=True)
+    note = models.CharField("備考", max_length=255, blank=True, null=True)
+    start_date = models.DateTimeField("開始日")
+    end_date = models.DateTimeField("終了日")
+    finished = models.BooleanField("終了", default=False)
+    date_created
 
 	instructors = forms.ModelMultipleChoiceField(label="教练", queryset=Profile.objects.all(), widget=forms.CheckboxSelectMultiple)
+    lesson_number = forms.IntegerField(label="课次", widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder': '课次'}))
 	name = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder': '客人名'}))
 	address = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder': '酒店名'}))
 	place = forms.ChoiceField(label="雪场", choices=PLACE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
