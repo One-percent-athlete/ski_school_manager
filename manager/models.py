@@ -113,7 +113,7 @@ class Lesson(models.Model):
     date_created = models.DateTimeField("作成日", auto_now_add=True)
 
     def __str__(self):
-        return f"{self.instructors} - {self.client}"
+        return f"{self.lesson_number} - {self.client} - {self.instructors}"
     
     @property
     def Is_past(self):
