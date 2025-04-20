@@ -114,7 +114,7 @@ class LessonForm(forms.ModelForm):
         ('喜乐乐', '喜乐乐'),
     ]
 
-	attendees = forms.ModelMultipleChoiceField(label="教练", queryset=Profile.objects.all(), widget=forms.CheckboxSelectMultiple)
+	instructors = forms.ModelMultipleChoiceField(label="教练", queryset=Profile.objects.all(), widget=forms.CheckboxSelectMultiple)
 	name = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder': '客人名'}))
 	address = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder': '酒店名'}))
 	place = forms.ChoiceField(label="雪场", choices=PLACE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
@@ -128,7 +128,7 @@ class LessonForm(forms.ModelForm):
 	payment_date = forms.DateField(label='支付日', widget=forms.DateInput(attrs={'type': 'date', 'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'}))
 	class Meta:
 		model = Lesson
-		fields = ('attendees', 'name', 'address', 'place', 'job_description','note', 'finished', 'start_date', 'end_date', 'payment_type', 'payment_amount', 'payment_date')
+		fields = ('instructors', 'name', 'address', 'place', 'job_description','note', 'finished', 'start_date', 'end_date', 'payment_type', 'payment_amount', 'payment_date')
 		labels = {
 			'attendees': '',
 		}
