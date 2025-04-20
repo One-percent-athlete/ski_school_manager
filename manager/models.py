@@ -99,6 +99,7 @@ class Lesson(models.Model):
     )
     instructors = models.ManyToManyField(Profile, related_name="instructors", blank=False)
     lesson_number = models.IntegerField("课次", blank=False, null=True, default=0)
+    lesson_type = models.CharField("课程类型", max_length=50, blank=True, null=True)
     client = models.CharField("客人姓名", max_length=255)
     address = models.CharField("酒店", max_length=255)
     level = models.CharField("级别", max_length=255)
