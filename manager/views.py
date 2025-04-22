@@ -195,7 +195,7 @@ def add_lesson(request):
         form = LessonForm(request.POST or None)
         if form.is_valid():
             form.save()
-            messages.success(request, ("课程拍好了。"))
+            messages.success(request, ("课程排好了。"))
             return redirect("lesson_list")
         else:
             messages.success(request, ("请再试一次。"))
