@@ -106,10 +106,10 @@ class Lesson(models.Model):
         ('导滑', '导滑'),
     )
 
-    instructors = models.ManyToManyField(Profile, related_name="instructors", blank=False)
     lesson_number = models.IntegerField("课次", blank=False, null=True, default=0)
-    lesson_type = models.CharField("课程类型", max_length=50, choices=LESSON_TYPE, default='初学')
+    instructors = models.ManyToManyField(Profile, related_name="instructors", blank=False)
     client = models.CharField("客人姓名", max_length=255)
+    lesson_type = models.CharField("课程类型", max_length=50, choices=LESSON_TYPE, default='初学')
     address = models.CharField("酒店", max_length=255)
     place = models.CharField("雪场", max_length=50, choices=PLACE, default='比洛夫')
     payment_type = models.CharField("付款方式", max_length=50, choices=PAYMENT_TYPES, default='未支付')
