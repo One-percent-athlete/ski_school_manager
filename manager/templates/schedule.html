@@ -32,10 +32,10 @@
                         课程类型
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        職長
+                        教练
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        同行者
+                        客人姓名
                     </th>
                     <th scope="col" class="px-6 py-3">
                         作業内容
@@ -61,12 +61,10 @@
                         {{ lesson.lesson_type }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ lesson.head_person }}
+                        {{ lesson.instructors }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {% for a in lesson.attendees.all %}
-                        {{ a }}
-                        {% endfor %}
+                        {{ lesson.customer_name }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         {{ lesson.job_description }}
