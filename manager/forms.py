@@ -122,10 +122,10 @@ class LessonForm(forms.ModelForm):
         ('导滑', '导滑'),
     ]
 
-	instructors = forms.ModelMultipleChoiceField(label="教练", queryset=Profile.objects.all(), widget=forms.CheckboxSelectMultiple)
 	lesson_number = forms.IntegerField(label="课次", widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder': '课次'}))
-	lesson_type = forms.ChoiceField(label="课程类型", choices=LESSON_TYPE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
+	instructors = forms.ModelMultipleChoiceField(label="教练", queryset=Profile.objects.all(), widget=forms.CheckboxSelectMultiple)
 	client = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder': '客人名'}))
+	lesson_type = forms.ChoiceField(label="课程类型", choices=LESSON_TYPE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 	address = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder': '酒店名'}))
 	place = forms.ChoiceField(label="雪场", choices=PLACE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 	note = forms.CharField(label="", required=False, widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', "placeholder": "連絡事項"}))
@@ -137,7 +137,7 @@ class LessonForm(forms.ModelForm):
 	payment_date = forms.DateField(label='支付日', widget=forms.DateInput(attrs={'type': 'date', 'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'}))
 	class Meta:
 		model = Lesson
-		fields = ('instructors', 'client', 'address', 'place', 'note', 'finished', 'start_date', 'end_date', 'payment_type', 'payment_amount', 'payment_date')
+		fields = ('lesson_number', 'instructors', 'client', 'lesson_type', 'address', 'place', 'note', 'finished', 'start_date', 'end_date', 'payment_type', 'payment_amount', 'payment_date')
 		labels = {
 			'instructors': '',
 		}
