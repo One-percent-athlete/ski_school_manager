@@ -124,7 +124,7 @@ class LessonForm(forms.ModelForm):
 
 	instructors = forms.ModelMultipleChoiceField(label="教练", queryset=Profile.objects.all(), widget=forms.CheckboxSelectMultiple)
 	lesson_number = forms.IntegerField(label="课次", widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder': '课次'}))
-	lesson_type = forms.ChoiceField(label="课程类型", choices=LESSON_TYPE, widget=forms.RadioSelect(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', "placeholder": "客人级别等"}))
+	lesson_type = forms.ChoiceField(label="课程类型", choices=LESSON_TYPE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 	client = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder': '客人名'}))
 	address = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder': '酒店名'}))
 	place = forms.ChoiceField(label="雪场", choices=PLACE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
