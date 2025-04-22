@@ -115,10 +115,11 @@ class LessonForm(forms.ModelForm):
     ]
 	
 	LESSON_TYPE = [
-        ('单板', '单板'),
-        ('双板', '双板'),
-        ('单板+双板', '单板+双板'),
-        ('其他', '其他'),
+        ('初学', '初学'),
+        ('初级', '初级'),
+        ('中级', '中级'),
+        ('上级', '上级'),
+        ('导滑', '导滑'),
     ]
 
 	instructors = forms.ModelMultipleChoiceField(label="教练", queryset=Profile.objects.all(), widget=forms.CheckboxSelectMultiple)
