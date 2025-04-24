@@ -37,10 +37,10 @@
                     <th scope="col" class="px-6 py-3">
                         职务
                     </th>
+                    {% if request.user.profile.contract_type == "管理" %}
                     <th scope="col" class="px-6 py-3">
                         提成
                     </th>
-                    {% if contract == "管理" %}
                     <th scope="col" class="px-6 py-3">
                         備考
                     </th>
@@ -63,10 +63,10 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                         {{ profile.contract_type }}
                     </td>
+                    {% if request.user.profile.contract_type == "管理" %}
                     <td class="px-6 py-4 whitespace-nowrap">
                         {{ profile.commission }}
                     </td>
-                    {% if contract == "管理" %}
                     <td class="px-6 py-4 whitespace-nowrap">
                         {{ profile.note }}
                     </td>
