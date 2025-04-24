@@ -139,7 +139,7 @@ class LessonForm(forms.ModelForm):
 	end_time = forms.TimeField(label='終了時間', widget=forms.TimeInput(attrs={'type': 'time', 'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'}))
 	class Meta:
 		model = Lesson
-		fields = ('lesson_number', 'instructors', 'client', 'lesson_type', 'address', 'place', 'payment_type', 'payment_amount', 'payment_date', 'note', 'finished', 'start_date', 'end_date')
+		fields = ('lesson_number', 'instructors', 'client', 'lesson_type', 'address', 'place', 'payment_type', 'payment_amount', 'payment_date', 'note', 'finished', 'start_date', 'end_date', 'start_time', 'end_time')
 		labels = {
 			'instructors': '',
 		}
