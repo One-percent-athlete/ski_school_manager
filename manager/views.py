@@ -228,8 +228,8 @@ def commission(request):
     if request.user.is_authenticated:
         if request.method == "POST":
             keyword = request.POST['keyword']
-            result_list = Profile.objects.filter(fullname__contains=keyword).order_by('-date_created')
-            return render(request, "commission.html", {"result_list": result_list, "keyword": keyword})
+            profiles = Profile.objects.filter(fullname__contains=keyword).order_by('-date_created')
+            return render(request, "commission.html", {"profiles": profiles, "keyword": keyword})
         else:
             profiles = Profile.objects.all()
             lessons = Lesson.objects.all()
