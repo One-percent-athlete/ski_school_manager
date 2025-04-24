@@ -61,7 +61,7 @@
                         {{ lesson.lesson_type }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        {{ lesson }}
+                        {{ lesson.instructors.all|join:", " }}
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         {{ lesson.customer_name }}
