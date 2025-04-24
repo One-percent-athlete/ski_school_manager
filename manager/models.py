@@ -118,6 +118,8 @@ class Lesson(models.Model):
     note = models.CharField("備考", max_length=255, blank=True, null=True)
     start_date = models.DateTimeField("開始日")
     end_date = models.DateTimeField("終了日")
+    start_time = models.TimeField("開始時間", blank=True, null=True)
+    end_time = models.TimeField("終了時間", blank=True, null=True)
     finished = models.BooleanField("終了", default=False)
     date_created = models.DateTimeField("作成日", auto_now_add=True)
 
