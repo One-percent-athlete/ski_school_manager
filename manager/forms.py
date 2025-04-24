@@ -135,6 +135,8 @@ class LessonForm(forms.ModelForm):
 	finished = forms.BooleanField(label="完了", required=False)
 	start_date = forms.DateField(label='開始日', widget=forms.DateInput(attrs={'type': 'date', 'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'}))
 	end_date = forms.DateField(label='終了日', widget=forms.DateInput(attrs={'type': 'date', 'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'}))
+	start_time = forms.TimeField(label='開始時間', widget=forms.TimeInput(attrs={'type': 'time', 'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'}))
+	end_time = forms.TimeField(label='終了時間', widget=forms.TimeInput(attrs={'type': 'time', 'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300'}))
 	class Meta:
 		model = Lesson
 		fields = ('lesson_number', 'instructors', 'client', 'lesson_type', 'address', 'place', 'payment_type', 'payment_amount', 'payment_date', 'note', 'finished', 'start_date', 'end_date')
