@@ -87,6 +87,11 @@ class Profile(models.Model):
         ('0%', '0%'),
     )
 
+    COMPANY_EVALUATION = (
+        ('5%', '5%'),
+        ('0%', '0%'),
+    )
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday = models.DateField("生年月日", blank=True, null=True)
     color = models.CharField("教练色", max_length=30, choices=COLORS)
