@@ -57,6 +57,25 @@ class Profile(models.Model):
         ('4年', '4年'),
         ('5年以上', '5年以上'),
     )
+    FARE_PECENTAGE = (
+        ('20%', '20%'),
+        ('21.5%', '21.5%'),
+        ('23%', '23%'),
+        ('24.5%', '24.5%'),
+        ('26%', '26%'),
+        
+        ('30%', '30%'),
+        ('31.5%', '31.5%'),
+        ('33%', '33%'),
+        ('34.5%', '34.5%'),
+        ('36%', '36%'),
+        
+        ('40%', '40%'),
+        ('41.5%', '41.5%'),
+        ('43%', '43%'),
+        ('44.5%', '44.5%'),
+        ('46%', '46%'),
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday = models.DateField("生年月日", blank=True, null=True)
     color = models.CharField("教练色", max_length=30, choices=COLORS)
