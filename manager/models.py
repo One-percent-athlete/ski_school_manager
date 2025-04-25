@@ -82,6 +82,10 @@ class Profile(models.Model):
         ('0%', '0%'),
     )
 
+    CUSTOMERS_EVALUATION = (
+        ('2%', '2%'),
+        ('0%', '0%'),
+    )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday = models.DateField("生年月日", blank=True, null=True)
