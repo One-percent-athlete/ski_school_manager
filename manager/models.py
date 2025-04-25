@@ -76,6 +76,12 @@ class Profile(models.Model):
         ('44.5%', '44.5%'),
         ('46%', '46%'),
     )
+
+    FULL_ATTENDANCE = (
+        
+        ('3%', '3%'),
+        ('0%', '0%'),
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday = models.DateField("生年月日", blank=True, null=True)
     color = models.CharField("教练色", max_length=30, choices=COLORS)
