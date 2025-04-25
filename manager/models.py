@@ -78,10 +78,11 @@ class Profile(models.Model):
     )
 
     FULL_ATTENDANCE = (
-        
         ('3%', '3%'),
         ('0%', '0%'),
     )
+
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday = models.DateField("生年月日", blank=True, null=True)
     color = models.CharField("教练色", max_length=30, choices=COLORS)
@@ -97,7 +98,7 @@ class Profile(models.Model):
     ski = models.CharField("级别", max_length=50, choices=SKI, default='双板1级')
     snowboard = models.CharField("级别", max_length=50, choices=SNOWBOARD, default='单板1级')
     accommodation = models.CharField("宿舍", max_length=20, blank=True)
-    YEARS = models.IntegerField("経験年数", max_length=50, choices=SKI, default='1年')
+    years_choices = models.IntegerField("経験年数", max_length=50, choices=SKI, default='1年')
     fare_percentage = models.CharField("提成比率", max_length=50, choices=FARE_PECENTAGE, default='20%')
     note = models.CharField("備考", max_length=500, blank=True)
     is_active = models.BooleanField("現役中", default=True)
