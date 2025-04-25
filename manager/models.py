@@ -110,6 +110,7 @@ class Profile(models.Model):
     years_choices = models.IntegerField("経験年数", max_length=50, choices=SKI, default='1年')
     fare_percentage = models.CharField("提成比率", max_length=50, choices=FARE_PECENTAGE, default='20%')
     full_attendance = models.CharField("全勤提成", max_length=50, choices=FULL_ATTENDANCE, default='3%')
+    customers_evaluation = models.CharField("客人評価", max_length=50, choices=CUSTOMERS_EVALUATION, default='2%')
     note = models.CharField("備考", max_length=500, blank=True)
     is_active = models.BooleanField("現役中", default=True)
     date_created = models.DateTimeField("作成日", auto_now_add=True)
