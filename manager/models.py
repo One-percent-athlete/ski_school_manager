@@ -50,6 +50,13 @@ class Profile(models.Model):
         ('其他', '其他'),
         ('无', '无'),
     )
+    YEAR_CHOICES = (
+        ('1年', '1年'),
+        ('2年', '2年'),
+        ('3年', '3年'),
+        ('4年', '4年'),
+        ('5年以上', '5年以上'),
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday = models.DateField("生年月日", blank=True, null=True)
     color = models.CharField("教练色", max_length=30, choices=COLORS)
@@ -65,6 +72,7 @@ class Profile(models.Model):
     ski = models.CharField("级别", max_length=50, choices=SKI, default='双板1级')
     snowboard = models.CharField("级别", max_length=50, choices=SNOWBOARD, default='单板1级')
     accommodation = models.CharField("宿舍", max_length=20, blank=True)
+    YEARS = models.IntegerField("経験年数", max_length=50, choices=SKI, default='1年')
     commission = models.DecimalField("提成", max_digits=10, decimal_places=2, default=0.00)
     note = models.CharField("備考", max_length=500, blank=True)
     is_active = models.BooleanField("現役中", default=True)
