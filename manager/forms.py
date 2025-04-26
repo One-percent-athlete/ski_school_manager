@@ -134,7 +134,7 @@ class UserProfileForm(forms.ModelForm):
 	fare_percentage = forms.ChoiceField(label="提成比率", choices=FARE_PECENTAGE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 	full_attendance = forms.ChoiceField(label="全勤提成", choices=FULL_ATTENDANCE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 	customers_evaluation = forms.ChoiceField(label="客人评价", choices=CUSTOMERS_EVALUATION, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
-    company_evaluation = 
+	company_evaluation = forms.ChoiceField(label="公司评价", choices=COMPANY_EVALUATION, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 	note = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'注意事項'}))
 	contract_type = forms.ChoiceField(label="职务", choices=TYPE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 	is_active = forms.BooleanField(label="現役中", required=False)
