@@ -76,17 +76,14 @@ class Profile(models.Model):
         ('44.5%', '44.5%'),
         ('46%', '46%'),
     )
-
     FULL_ATTENDANCE = (
         ('3%', '3%'),
         ('0%', '0%'),
     )
-
     CUSTOMERS_EVALUATION = (
         ('2%', '2%'),
         ('0%', '0%'),
     )
-
     COMPANY_EVALUATION = (
         ('5%', '5%'),
         ('0%', '0%'),
@@ -107,7 +104,7 @@ class Profile(models.Model):
     ski = models.CharField("级别", max_length=50, choices=SKI, default='双板1级')
     snowboard = models.CharField("级别", max_length=50, choices=SNOWBOARD, default='单板1级')
     accommodation = models.CharField("宿舍", max_length=20, blank=True)
-    years_choices = models.IntegerField("経験年数", max_length=50, choices=SKI, default='1年')
+    years_choices = models.CharField("経験年数", max_length=50, choices=YEAR_CHOICES, default='1年')
     fare_percentage = models.CharField("提成比率", max_length=50, choices=FARE_PECENTAGE, default='20%')
     full_attendance = models.CharField("全勤提成", max_length=50, choices=FULL_ATTENDANCE, default='3%')
     customers_evaluation = models.CharField("客人評価", max_length=50, choices=CUSTOMERS_EVALUATION, default='2%')
