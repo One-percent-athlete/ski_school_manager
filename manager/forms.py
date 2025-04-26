@@ -73,6 +73,49 @@ class UserProfileForm(forms.ModelForm):
         ('其他', '其他'),
         ('无', '无'),
     ]
+
+	YEAR_CHOICES = [
+        ('1年', '1年'),
+        ('2年', '2年'),
+        ('3年', '3年'),
+        ('4年', '4年'),
+        ('5年以上', '5年以上'),
+    ]
+	
+	FARE_PECENTAGE = [
+        ('20%', '20%'),
+        ('21.5%', '21.5%'),
+        ('23%', '23%'),
+        ('24.5%', '24.5%'),
+        ('26%', '26%'),
+        
+        ('30%', '30%'),
+        ('31.5%', '31.5%'),
+        ('33%', '33%'),
+        ('34.5%', '34.5%'),
+        ('36%', '36%'),
+        
+        ('40%', '40%'),
+        ('41.5%', '41.5%'),
+        ('43%', '43%'),
+        ('44.5%', '44.5%'),
+        ('46%', '46%'),
+    ]
+	
+	FULL_ATTENDANCE = [
+        ('3%', '3%'),
+        ('0%', '0%'),
+    ]
+	
+	CUSTOMERS_EVALUATION = [
+        ('2%', '2%'),
+        ('0%', '0%'),
+    ]
+	
+	COMPANY_EVALUATION = [
+        ('5%', '5%'),
+        ('0%', '0%'),
+    ]
    
 	fullname = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'姓名'}))
 	color = forms.ChoiceField(label="日历表示色", choices=COLORS, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
@@ -120,49 +163,6 @@ class LessonForm(forms.ModelForm):
         ('中级', '中级'),
         ('上级', '上级'),
         ('导滑', '导滑'),
-    ]
-
-	YEAR_CHOICES = [
-        ('1年', '1年'),
-        ('2年', '2年'),
-        ('3年', '3年'),
-        ('4年', '4年'),
-        ('5年以上', '5年以上'),
-    ]
-	
-	FARE_PECENTAGE = [
-        ('20%', '20%'),
-        ('21.5%', '21.5%'),
-        ('23%', '23%'),
-        ('24.5%', '24.5%'),
-        ('26%', '26%'),
-        
-        ('30%', '30%'),
-        ('31.5%', '31.5%'),
-        ('33%', '33%'),
-        ('34.5%', '34.5%'),
-        ('36%', '36%'),
-        
-        ('40%', '40%'),
-        ('41.5%', '41.5%'),
-        ('43%', '43%'),
-        ('44.5%', '44.5%'),
-        ('46%', '46%'),
-    ]
-	
-	FULL_ATTENDANCE = [
-        ('3%', '3%'),
-        ('0%', '0%'),
-    ]
-	
-	CUSTOMERS_EVALUATION = [
-        ('2%', '2%'),
-        ('0%', '0%'),
-    ]
-	
-	COMPANY_EVALUATION = [
-        ('5%', '5%'),
-        ('0%', '0%'),
     ]
 
 	lesson_number = forms.IntegerField(label="课次", widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder': '课次'}))
