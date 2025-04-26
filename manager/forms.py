@@ -130,7 +130,11 @@ class UserProfileForm(forms.ModelForm):
 	snowboard_system = forms.ChoiceField(label="单板体系", choices=SNOWBOARD_SYSTEM, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 	snowboard = forms.ChoiceField(label="单板级别", choices=SNOWBOARD, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 	accommodation = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'宿舍'}))
-	commission = forms.DecimalField(label="", max_digits=10, decimal_places=2, widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'提成'}))
+	years_choices = 
+    fare_percentage = 
+    full_attendance = 
+    customers_evaluation = 
+    company_evaluation = 
 	note = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'注意事項'}))
 	contract_type = forms.ChoiceField(label="职务", choices=TYPE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 	is_active = forms.BooleanField(label="現役中", required=False)
