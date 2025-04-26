@@ -129,7 +129,8 @@ class LessonForm(forms.ModelForm):
         ('4年', '4年'),
         ('5年以上', '5年以上'),
     ]
-    FARE_PECENTAGE = (
+	
+	FARE_PECENTAGE = [
         ('20%', '20%'),
         ('21.5%', '21.5%'),
         ('23%', '23%'),
@@ -147,22 +148,22 @@ class LessonForm(forms.ModelForm):
         ('43%', '43%'),
         ('44.5%', '44.5%'),
         ('46%', '46%'),
-    )
-
-    FULL_ATTENDANCE = (
+    ]
+	
+	FULL_ATTENDANCE = [
         ('3%', '3%'),
         ('0%', '0%'),
-    )
-
-    CUSTOMERS_EVALUATION = (
+    ]
+	
+	CUSTOMERS_EVALUATION = [
         ('2%', '2%'),
         ('0%', '0%'),
-    )
-
-    COMPANY_EVALUATION = (
+    ]
+	
+	COMPANY_EVALUATION = [
         ('5%', '5%'),
         ('0%', '0%'),
-    )
+    ]
 
 	lesson_number = forms.IntegerField(label="课次", widget=forms.TextInput(attrs={'class':'form-control mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder': '课次'}))
 	instructors = forms.ModelMultipleChoiceField(label="教练", queryset=Profile.objects.all(), widget=forms.CheckboxSelectMultiple)
