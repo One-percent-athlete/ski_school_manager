@@ -122,13 +122,13 @@ class LessonForm(forms.ModelForm):
         ('导滑', '导滑'),
     ]
 
-	YEAR_CHOICES = (
+	YEAR_CHOICES = [
         ('1年', '1年'),
         ('2年', '2年'),
         ('3年', '3年'),
         ('4年', '4年'),
         ('5年以上', '5年以上'),
-    )
+    ]
     FARE_PECENTAGE = (
         ('20%', '20%'),
         ('21.5%', '21.5%'),
