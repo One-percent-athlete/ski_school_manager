@@ -131,7 +131,7 @@ class UserProfileForm(forms.ModelForm):
 	snowboard = forms.ChoiceField(label="单板级别", choices=SNOWBOARD, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
 	accommodation = forms.CharField(label="", widget=forms.TextInput(attrs={'class':'form-control w-1/5 mb-4 p-2 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300', 'placeholder':'宿舍'}))
 	years_choices = forms.ChoiceField(label="经验年数", choices=YEAR_CHOICES, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
-    fare_percentage = 
+    fare_percentage = forms.ChoiceField(label="提成比率", choices=FARE_PECENTAGE, widget=forms.RadioSelect(attrs={'class': 'form-check-input'}))
     full_attendance = 
     customers_evaluation = 
     company_evaluation = 
