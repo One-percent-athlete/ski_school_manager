@@ -141,7 +141,7 @@ class UserProfileForm(forms.ModelForm):
 
 	class Meta:
 		model = Profile
-		fields = ('fullname', 'color', 'birthday', 'phone', 'email', 'wechat', 'whatsapp', 'line', 'ski_system', 'ski', 'snowboard_system', 'snowboard', 'accommodation', 'commission', 'note', 'contract_type', 'is_active')
+		fields = ('fullname', 'color', 'birthday', 'phone', 'email', 'wechat', 'whatsapp', 'line', 'ski_system', 'ski', 'snowboard_system', 'snowboard', 'accommodation', 'years_choices', 'fare_percentage', 'full_attendance', 'customers_evaluation', 'company_evaluation',  'note', 'contract_type', 'is_active')
 
 class LessonForm(forms.ModelForm):
 	
